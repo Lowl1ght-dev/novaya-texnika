@@ -1,6 +1,8 @@
 import React from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
+import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import SeoHead from './components/SeoHead'
 import Frame10 from './components/Frame10'
 import Frame4 from './components/Frame4'
 import CatalogPage from './components/CatalogPage'
@@ -52,20 +54,22 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <BrowserRouter>
-      <GlobalStyle />
-      <Routes>
-        <Route path="/" element={<Frame10 />} />
-        <Route path="/parts" element={<Frame4 />} />
-        <Route path="/products/air-treatment" element={<CatalogPage/>} />
-        <Route path="/products/oil-injected" element={<ScrewCompressorsPage />} />
-        <Route path="/products/oil-free" element={<OilFreePage/>} />
-        <Route path="/products" element={<ProductsPage/>} />
-        <Route path="/products/portable" element={<PortablePage/>} />
-        <Route path="/about" element={<AboutPage />} />
-        
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <GlobalStyle />
+        <SeoHead />
+        <Routes>
+          <Route path="/" element={<Frame10 />} />
+          <Route path="/parts" element={<Frame4 />} />
+          <Route path="/products/air-treatment" element={<CatalogPage />} />
+          <Route path="/products/oil-injected" element={<ScrewCompressorsPage />} />
+          <Route path="/products/oil-free" element={<OilFreePage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/portable" element={<PortablePage />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   )
 }
 

@@ -115,6 +115,19 @@ const StyledHeaderDot = styled.div`
   pointer-events: none;
 `
 
+const VisuallyHiddenH1 = styled.h1`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+`
+
 const StyledProductButton = styled(Link)`
   display: block;
   width: 100%;
@@ -178,6 +191,9 @@ const ProductsPage = () => {
           <StyledHeaderDot style={{ left: 1885, top: 12 }} />
           <StyledHeaderDot style={{ left: 1885, top: 86 }} />
           <Header />
+          <VisuallyHiddenH1>
+            Каталог компрессорного оборудования Bolaite — винтовые, безмасляные и портативные модели
+          </VisuallyHiddenH1>
           <StyledButtonsWrapper>
             {buttons.map((btn, i) => (
               <StyledProductButton key={i} to={btn.to}>

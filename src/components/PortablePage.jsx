@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 import Header from './Header'
+import { heroImageProps, lazyImageProps } from '../utils/imagePerf'
 
 const DESIGN_WIDTH = 1920
 const DESIGN_HEIGHT = 4319
@@ -167,10 +168,11 @@ const StyledDot = styled.div`
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
-const StyledHeroTitle = styled(motion.div)`
+const StyledHeroTitle = styled(motion.h1)`
   position: absolute;
   top: 302px;
   left: 589px;
+  margin: 0;
   font-family: 'Instrument Sans', 'Inter', sans-serif;
   font-weight: 600;
   font-size: 68px;
@@ -754,10 +756,32 @@ const PortablePage = () => {
             для буксировки и работы без электропитания
           </StyledDieselDesc>
 
-          <StyledProductImg className="portable-3"  src={IMG('liutech-portable-compressor-3-800-800.jpg 1.png')} alt="Дизельный компрессор" />
-          <StyledProductImg className="portable-2"  src={IMG('liutech-portable-compressor-2-800-800 1.png')}    alt="Портативный компрессор 2" />
-          <StyledProductImg className="portable-4"  src={IMG('liutech-portable-compressor-4-800-800 1.png')}    alt="Портативный компрессор 4" />
-          <StyledProductImg className="portable-5a" src={IMG('liutech-portable-compressor-5-800-800.jpg 1.png')} alt="Портативный компрессор 5" />
+          <StyledProductImg
+            className="portable-3"
+            src={IMG('liutech-portable-compressor-3-800-800.jpg 1.png')}
+            alt="Дизельный передвижной компрессор цена — Liutech, Новая Техника Иркутск"
+            width={847}
+            height={847}
+            {...heroImageProps}
+          />
+          <StyledProductImg
+            className="portable-2"
+            src={IMG('liutech-portable-compressor-2-800-800 1.png')}
+            alt="Передвижной компрессор Liutech — купить в Иркутске"
+            {...lazyImageProps(260, 260)}
+          />
+          <StyledProductImg
+            className="portable-4"
+            src={IMG('liutech-portable-compressor-4-800-800 1.png')}
+            alt="Промышленный передвижной воздушный компрессор Иркутск"
+            {...lazyImageProps(254, 254)}
+          />
+          <StyledProductImg
+            className="portable-5a"
+            src={IMG('liutech-portable-compressor-5-800-800.jpg 1.png')}
+            alt="Дизельный передвижной компрессор в наличии — Иркутск"
+            {...lazyImageProps(263, 263)}
+          />
 
 
           {/* Use Case 1 */}
@@ -803,10 +827,30 @@ const PortablePage = () => {
             Сочтание мобильности и экологичных двигателей
           </StyledElectricDesc>
 
-          <StyledProductImg className="electric-6"  src={IMG('liutech-electical-portable-compressor-6-800-800.jpg 1.png')} alt="Электрический компрессор 6" />
-          <StyledProductImg className="portable-5b" src={IMG('liutech-portable-compressor-5-800-800.jpg 2.png')}            alt="Портативный компрессор 5b" />
-          <StyledProductImg className="electric-4"  src={IMG('liutech-electical-portable-compressor-4-800-800.jpg 1.png')} alt="Электрический компрессор 4" />
-          <StyledProductImg className="electric-2"  src={IMG('liutech-electical-portable-compressor-2-800-800.jpg 1.png')} alt="Электрический компрессор 2" />
+          <StyledProductImg
+            className="electric-6"
+            src={IMG('liutech-electical-portable-compressor-6-800-800.jpg 1.png')}
+            alt="Электрический передвижной компрессор Liutech — цена Иркутск"
+            {...lazyImageProps(923, 923)}
+          />
+          <StyledProductImg
+            className="portable-5b"
+            src={IMG('liutech-portable-compressor-5-800-800.jpg 2.png')}
+            alt="Передвижной компрессор для стройки — Новая Техника Иркутск"
+            {...lazyImageProps(322, 322)}
+          />
+          <StyledProductImg
+            className="electric-4"
+            src={IMG('liutech-electical-portable-compressor-4-800-800.jpg 1.png')}
+            alt="Электрический промышленный компрессор передвижной — Иркутск"
+            {...lazyImageProps(286, 286)}
+          />
+          <StyledProductImg
+            className="electric-2"
+            src={IMG('liutech-electical-portable-compressor-2-800-800.jpg 1.png')}
+            alt="Передвижной компрессор Liutech электрический — купить в Иркутске"
+            {...lazyImageProps(293, 293)}
+          />
 
 
           {/* Use Case 4 */}

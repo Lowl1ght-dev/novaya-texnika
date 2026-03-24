@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import Header from './Header'
+import { heroImageProps, lazyImageProps } from '../utils/imagePerf'
 
 const DESIGN_WIDTH = 1920
 const DESIGN_HEIGHT = 6465
@@ -70,18 +71,23 @@ const StyledRectangle9 = styled.div`
   }
 `
 
-/* Герой: полная ширина, вплотную под линией header bottom (90px) */
-const StyledMaxresdefault1 = styled.div`
+/* Герой: <img> для LCP — fetchpriority=high + явные размеры (меньше CLS) */
+const StyledHeroBannerWrap = styled.div`
   position: absolute;
   left: 0;
   top: 91px;
   width: 1920px;
   height: 716px;
-  background-image: url('/images/maxresdefault 1.png');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
   z-index: 6;
+  overflow: hidden;
+`
+
+const StyledHeroBannerImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
 `
 
 /* Как на /products/oil-injected: верх/низ 15–90px, палки 548 / 844 / 1118 / 1318 */
@@ -169,32 +175,46 @@ const StyledRectangle = styled.div`
   &.rect-32 { width: 60px; height: 130px; left: 268px; top: 921px; }
 `
 
-const StyledMainTitle = styled(motion.div)`
+/* Визуальный логотип «НОВАЯ / ТЕХНИКА»; семантический H1 — скрытый SEO-заголовок */
+const StyledHeroBrand = styled.div`
   position: absolute;
-  width: 640px;
-  height: 199px;
   left: 449px;
-  top: 791px;
-  color: #9C9E9D;
+  top: 838px;
+  width: 640px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+`
+
+const StyledHeroLine1 = styled(motion.span)`
+  display: block;
+  width: 100%;
+  color: #9c9e9d;
   font-size: 150px;
-  font-family: Jost;
+  font-family: Jost, sans-serif;
   font-weight: 900;
   letter-spacing: 15px;
   text-align: center;
+  line-height: 0.88;
 `
 
-const StyledSubTitle = styled(motion.div)`
-  position: absolute;
-  width: 640px;
-  height: 130px;
-  left: 449px;
-  top: 930px;
-  color: #9C9E9D;
+const StyledHeroLine2 = styled(motion.span)`
+  display: block;
+  width: 100%;
+  margin-top: -14px;
+  color: #9c9e9d;
   font-size: 115px;
-  font-family: Jost;
+  font-family: Jost, sans-serif;
   font-weight: 900;
   letter-spacing: 5.75px;
   text-align: center;
+  line-height: 0.88;
 `
 
 const StyledRightPanel = styled.div`
@@ -299,17 +319,20 @@ const StyledCTALine = styled.div`
   -webkit-mask-size: 100% 100%;
 `
 
-const StyledCompressorTitle = styled.div`
+const StyledCompressorTitle = styled.h2`
   position: absolute;
-  width: 328px;
-  height: 31px;
-  left: 780px;
-  top: 1069px;
-  color: #9C9E9D;
+  left: 449px;
+  width: 640px;
+  min-height: 31px;
+  top: 1060px;
+  margin: 0;
+  padding: 0;
+  color: #b0b0b0;
   font-size: 24px;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-weight: 400;
-  text-align: center;
+  text-align: right;
+  line-height: 1.2;
 `
 
 const StyledProductsTitle = styled.div`
@@ -1141,7 +1164,15 @@ const Frame10 = () => {
       <StyledDecorativeLine className="rect9-line-top" />
       <StyledDecorativeLine className="rect9-line-bottom" />
       <StyledDecorativeLine className="bolaite-line-18" />
-      <StyledMaxresdefault1 />
+      <StyledHeroBannerWrap>
+        <StyledHeroBannerImg
+          src="/images/maxresdefault 1.png"
+          alt="Промышленные воздушные компрессоры Bolaite на производстве"
+          width={1920}
+          height={716}
+          {...heroImageProps}
+        />
+      </StyledHeroBannerWrap>
 
       <StyledLineEndDot className="left-top" />
       <StyledLineEndDot className="left-bottom" />
@@ -1169,21 +1200,25 @@ const Frame10 = () => {
       <StyledRectangle className="rect-31" />
       <StyledRectangle className="rect-32" />
 
-      <StyledMainTitle
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        НОВАЯ
-      </StyledMainTitle>
-
-      <StyledSubTitle
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-      >
-        ТЕХНИКА
-      </StyledSubTitle>
+      <h1 className="sr-only">
+        Продажа и обслуживание воздушных компрессоров в Иркутске
+      </h1>
+      <StyledHeroBrand aria-hidden="true">
+        <StyledHeroLine1
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          НОВАЯ
+        </StyledHeroLine1>
+        <StyledHeroLine2
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          ТЕХНИКА
+        </StyledHeroLine2>
+      </StyledHeroBrand>
 
       <StyledRightPanel />
       <StyledCallToActionArea />
@@ -1209,16 +1244,41 @@ const Frame10 = () => {
 
       <StyledProductsTitle>ПРОДУКЦИЯ</StyledProductsTitle>
 
-      <StyledProductCard className="card-1" href="#" aria-label="Bolaite компрессор">
-        <StyledProductImage src="/images/bolaite-compressor-1.png" alt="Bolaite компрессор" />
+      <StyledProductCard
+        className="card-1"
+        href="#"
+        aria-label="Винтовой компрессор Новая Техника купить в Иркутске"
+      >
+        <StyledProductImage
+          src="/images/bolaite-compressor-1.png"
+          alt="Винтовой компрессор Новая Техника купить в Иркутске"
+          {...lazyImageProps(266, 260)}
+        />
       </StyledProductCard>
 
-      <StyledProductCard className="card-2" href="#" aria-label="Портативный компрессор">
-        <StyledProductImage src="/images/liutech-portable-air-compressor-211-1.jpg 1.png" alt="Портативный компрессор" />
+      <StyledProductCard
+        className="card-2"
+        href="#"
+        aria-label="Дизельный передвижной компрессор цена Иркутск"
+      >
+        <StyledProductImage
+          src="/images/liutech-portable-air-compressor-211-1.jpg 1.png"
+          alt="Дизельный передвижной компрессор цена — Новая Техника Иркутск"
+          {...lazyImageProps(267, 260)}
+        />
       </StyledProductCard>
 
-      <StyledProductCard className="card-large" href="#" aria-label="Безмасляный компрессор">
-        <StyledProductImage className="large" src="/images/oil-free-800-800.jpg 1.png" alt="Безмасляный компрессор" />
+      <StyledProductCard
+        className="card-large"
+        href="#"
+        aria-label="Продажа безмасляных компрессоров цена Иркутск"
+      >
+        <StyledProductImage
+          className="large"
+          src="/images/oil-free-800-800.jpg 1.png"
+          alt="Продажа безмасляного компрессора цена — Новая Техника Иркутск"
+          {...lazyImageProps(500, 490)}
+        />
       </StyledProductCard>
 
       <StyledProductDesc className="desc1">Bolaite предлагает</StyledProductDesc>
@@ -1240,12 +1300,30 @@ const Frame10 = () => {
       <StyledProductSpec className="text4">text</StyledProductSpec>
       <StyledProductSpec className="text5">text</StyledProductSpec>
 
-      <StyledProductCard2 className="card-bottom-1" href="#" aria-label="Компрессор">
-        <StyledProductImage className="product3" src="/images/bolaite-compressor-blt-150a.png" alt="Компрессор" />
+      <StyledProductCard2
+        className="card-bottom-1"
+        href="#"
+        aria-label="Промышленный винтовой компрессор Bolaite Иркутск"
+      >
+        <StyledProductImage
+          className="product3"
+          src="/images/bolaite-compressor-blt-150a.png"
+          alt="Промышленный винтовой компрессор Bolaite — купить в Иркутске, Новая Техника"
+          {...lazyImageProps(305, 296)}
+        />
       </StyledProductCard2>
 
-      <StyledProductCard2 className="card-bottom-2" href="#" aria-label="Лазерная резка">
-        <StyledProductImage className="product2" src="/images/laser-cutting-3-800-800.jpg 1.png" alt="Лазерная резка" />
+      <StyledProductCard2
+        className="card-bottom-2"
+        href="#"
+        aria-label="Промышленный компрессор для лазерной резки Иркутск"
+      >
+        <StyledProductImage
+          className="product2"
+          src="/images/laser-cutting-3-800-800.jpg 1.png"
+          alt="Промышленный воздушный компрессор для лазерной резки — Иркутск, Новая Техника"
+          {...lazyImageProps(290, 296)}
+        />
       </StyledProductCard2>
       <StyledCardBottom2DiagonalBorder viewBox="0 0 290 296">
         <polygon
@@ -1316,11 +1394,19 @@ const Frame10 = () => {
 
 
       <StyledProductGlow />
-      <StyledMainProductImage src="/images/atlas-copco-airend-800-800.png 2.png" alt="Atlas Copco компрессор" />
+      <StyledMainProductImage
+        src="/images/atlas-copco-airend-800-800.png 2.png"
+        alt="Промышленный компрессорный блок Atlas Copco — сервис в Иркутске, Новая Техника"
+        {...lazyImageProps(884, 885)}
+      />
 
       <StyledAtlasProductCard className="card-controller">
         <StyledAtlasCardImageArea className="controller" as="button" type="button" aria-label="Двигатель постоянного тока с масляным охлаждением">
-          <StyledAtlasCardImage src="/images/mk5s-controller800-800-1.png 1.png" alt="Контроллер" />
+          <StyledAtlasCardImage
+            src="/images/mk5s-controller800-800-1.png 1.png"
+            alt="Двигатель постоянного тока с масляным охлаждением для промышленного компрессора — Иркутск"
+            {...lazyImageProps(800, 800)}
+          />
         </StyledAtlasCardImageArea>
         <StyledAtlasCardText>Двигатель постоянного тока с масляным охлаждением</StyledAtlasCardText>
       </StyledAtlasProductCard>
@@ -1336,7 +1422,11 @@ const Frame10 = () => {
       <StyledAtlasMotorGlow />
       <StyledAtlasProductCard className="card-motor">
         <StyledAtlasCardImageArea as="button" type="button" aria-label="Контроллер Atlas Copco">
-          <StyledAtlasCardImage src="/images/oil-cooled-motor-800-800.png 1.png" alt="Двигатель" />
+          <StyledAtlasCardImage
+            src="/images/oil-cooled-motor-800-800.png 1.png"
+            alt="Контроллер Atlas Copco для компрессорного оборудования — Новая Техника Иркутск"
+            {...lazyImageProps(800, 800)}
+          />
         </StyledAtlasCardImageArea>
         <StyledAtlasCardText>Контроллер Atlas Copco</StyledAtlasCardText>
       </StyledAtlasProductCard>

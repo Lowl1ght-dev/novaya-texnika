@@ -101,7 +101,15 @@ const Header = () => {
     <>
       <StyledHeaderBackground />
       <StyledLogoLink to="/">
-        <StyledLogo src="/images/logotip-novaya.png" alt="Новая техника" />
+        <StyledLogo
+          src="/images/nt-mark.png"
+          alt="Новая техника — знак НТ"
+          width={120}
+          height={52}
+          loading="eager"
+          fetchpriority="low"
+          decoding="async"
+        />
       </StyledLogoLink>
       <StyledNavItem href="/" className={`nav-1 nav-item ${activeNav === 'nav-1' ? 'active' : ''}`}><StyledNavText>ГЛАВНАЯ</StyledNavText></StyledNavItem>
       <StyledNavItem href="/products" className={`nav-2 nav-item ${activeNav === 'nav-2' ? 'active' : ''}`}><StyledNavText>ПРОДУКЦИЯ</StyledNavText></StyledNavItem>

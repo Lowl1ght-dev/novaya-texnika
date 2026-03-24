@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 import Header from './Header'
+import { heroImageProps, lazyImageProps } from '../utils/imagePerf'
 
 const DESIGN_WIDTH = 1920
 const DESIGN_HEIGHT = 4319
@@ -175,10 +176,11 @@ const StyledDot = styled.div`
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
-const StyledHeroTitle = styled(motion.div)`
+const StyledHeroTitle = styled(motion.h1)`
   position: absolute;
   top: 302px;
   left: 589px;
+  margin: 0;
   font-family: 'Instrument Sans', 'Inter', sans-serif;
   font-weight: 600;
   font-size: 68px;
@@ -805,8 +807,20 @@ const OilFreePage = () => {
             в прогрессивном решении
           </StyledSpiralDesc>
 
-          <StyledProductImg className="spiral"   src={IMG('Spiral_Air_OilFreeCompressor 1.png')} alt="Спиральный безмасляный компрессор" />
-          <StyledProductImg className="oil-free" src={IMG('oil-free-800-800 1.png')}             alt="Безмасляный компрессор" />
+          <StyledProductImg
+            className="spiral"
+            src={IMG('Spiral_Air_OilFreeCompressor 1.png')}
+            alt="Продажа безмасляного спирального компрессора цена — Иркутск, Новая Техника"
+            width={968}
+            height={720}
+            {...heroImageProps}
+          />
+          <StyledProductImg
+            className="oil-free"
+            src={IMG('oil-free-800-800 1.png')}
+            alt="Безмасляный компрессор Bolaite — купить в Иркутске, промышленное оборудование"
+            {...lazyImageProps(520, 440)}
+          />
           <StyledProductLabel1>TH PM 10-100 л.с.</StyledProductLabel1>
 
           <SpecBlock top={1930} left={323} />
@@ -818,9 +832,24 @@ const OilFreePage = () => {
             обеспечивающих 100% безмасляный чистый воздух
           </StyledWaterDesc>
 
-          <StyledProductImg className="airend" src={IMG('airend-2-800-800 1.png')}     alt="Безмасляный компрессор с водяной смазкой" />
-          <StyledProductImg className="image5" src={IMG('image 5.png')}                alt="Компрессор" />
-          <StyledProductImg className="blw"    src={IMG('blw-oil-free-800-800 1.png')} alt="BLW безмасляный" />
+          <StyledProductImg
+            className="airend"
+            src={IMG('airend-2-800-800 1.png')}
+            alt="Безмасляный компрессор с водяной смазкой — продажа и сервис Иркутск"
+            {...lazyImageProps(1100, 818)}
+          />
+          <StyledProductImg
+            className="image5"
+            src={IMG('image 5.png')}
+            alt="Промышленный безмасляный компрессор — Новая Техника Иркутск"
+            {...lazyImageProps(574, 459)}
+          />
+          <StyledProductImg
+            className="blw"
+            src={IMG('blw-oil-free-800-800 1.png')}
+            alt="Безмасляный компрессор Bolaite BLW — цена, наличие Иркутск"
+            {...lazyImageProps(717, 717)}
+          />
 
           <StyledProductLabel2>BLW-50A</StyledProductLabel2>
           <SpecBlock top={2312} left={323} />

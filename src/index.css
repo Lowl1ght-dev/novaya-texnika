@@ -1,4 +1,9 @@
 /* Reset and base styles */
+/*
+ * Шрифты: Inter/Jost с Google Fonts — в index.html в URL указано &display=swap
+ * (текст рисуется системным шрифтом до загрузки веб-шрифта, без «пустой» страницы).
+ * Любые локальные @font-face: добавляйте font-display: swap;
+ */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +15,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-weight: 400;
   line-height: 1.5;
   color: #333;

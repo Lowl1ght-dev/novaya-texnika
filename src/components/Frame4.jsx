@@ -11,6 +11,7 @@ import bolaiteOilImg from '../frontend/images/frame4/bolaite-oil.jpg 1.png'
 import bolaiteServiceKitImg from '../frontend/images/frame4/Bolaite-service-kit.jpg 1.png'
 import airPipingImg from '../frontend/images/frame4/air-piping.jpg 1.png'
 import heroFactoryImg from '../frontend/images/frame4/image 3.png'
+import { heroImageProps, lazyImageProps } from '../utils/imagePerf'
 
 const DESIGN_WIDTH = 1920
 const DESIGN_HEIGHT = 4315
@@ -755,7 +756,13 @@ const Frame4 = () => {
           <StyledHeroSubtitle>Первоклассные запчасти для воздушных компрессоров</StyledHeroSubtitle>
 
           <StyledHeroCard>
-            <StyledHeroImage src={heroFactoryImg} alt="Производство Bolaite" />
+            <StyledHeroImage
+              src={heroFactoryImg}
+              alt="Запчасти для компрессоров в наличии и сервис — Новая Техника Иркутск"
+              width={960}
+              height={771}
+              {...heroImageProps}
+            />
           </StyledHeroCard>
 
           <StyledWideChoiceTitle>ШИРОКИЙ ВЫБОР</StyledWideChoiceTitle>
@@ -779,13 +786,25 @@ const Frame4 = () => {
          
 
           <StyledProductCell style={{ top: 1231, left: 82, width: 541, height: 629 }}>
-            <StyledProductImage src={compressorAirFilterImg} alt="Фильтр воздушный" />
+            <StyledProductImage
+              src={compressorAirFilterImg}
+              alt="Воздушный фильтр для компрессора — запчасти в наличии Иркутск"
+              {...lazyImageProps(541, 629)}
+            />
           </StyledProductCell>
           <StyledProductCell style={{ top: 1231, left: 721, width: 500, height: 630 }}>
-            <StyledProductImage src={oilFilterImg} alt="Масляный фильтр" />
+            <StyledProductImage
+              src={oilFilterImg}
+              alt="Масляный фильтр Bolaite — запчасти для компрессоров Иркутск"
+              {...lazyImageProps(500, 630)}
+            />
           </StyledProductCell>
           <StyledProductCell style={{ top: 1231, left: 1294, width: 545, height: 630 }}>
-            <StyledProductImage src={oilSeparatorImg} alt="Маслоотделитель" />
+            <StyledProductImage
+              src={oilSeparatorImg}
+              alt="Маслоотделитель для компрессорного оборудования — в наличии Иркутск"
+              {...lazyImageProps(545, 630)}
+            />
           </StyledProductCell>
 
           <StyledDustPreventionText>
@@ -810,13 +829,25 @@ const Frame4 = () => {
           </StyledBottomSectionTitle>
 
           <StyledProductCell style={{ top: 2340, left: 85, width: 531, height: 541 }}>
-            <StyledProductImage src={bolaiteOilImg} alt="Масло Bolaite" />
+            <StyledProductImage
+              src={bolaiteOilImg}
+              alt="Масло для компрессора Bolaite — запчасти и расходники Иркутск"
+              {...lazyImageProps(531, 541)}
+            />
           </StyledProductCell>
           <StyledProductCell style={{ top: 2350, left: 721, width: 500, height: 530 }}>
-            <StyledProductImage src={bolaiteServiceKitImg} alt="Сервисный комплект Bolaite" />
+            <StyledProductImage
+              src={bolaiteServiceKitImg}
+              alt="Сервисный комплект Bolaite — сервисное обслуживание компрессоров Иркутск"
+              {...lazyImageProps(500, 530)}
+            />
           </StyledProductCell>
           <StyledProductCell style={{ top: 2350, left: 1295, width: 545, height: 530 }}>
-            <StyledProductImage src={airPipingImg} alt="Система воздуховодов" />
+            <StyledProductImage
+              src={airPipingImg}
+              alt="Система воздуховодов для промышленного компрессора — Иркутск"
+              {...lazyImageProps(545, 530)}
+            />
           </StyledProductCell>
 
           <StyledBottomDescription style={{ left: 110 }}>

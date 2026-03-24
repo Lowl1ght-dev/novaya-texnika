@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 import Header from './Header'
+import { heroImageProps, lazyImageProps } from '../utils/imagePerf'
 
 const DESIGN_WIDTH = 1920
 const DESIGN_HEIGHT = 5388
@@ -167,10 +168,11 @@ const StyledDot = styled.div`
 
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 
-const StyledHeroTitle = styled(motion.div)`
+const StyledHeroTitle = styled(motion.h1)`
   position: absolute;
   top: 302px;
   left: 589px;
+  margin: 0;
   font-family: 'Instrument Sans', 'Inter', sans-serif;
   font-weight: 600;
   font-size: 68px;
@@ -758,9 +760,26 @@ const ScrewCompressorsPage = () => {
             в соответствии с вашими потребностями в воздухе
           </StyledSectionDesc>
 
-          <StyledProductImg className="th-pm"    src={IMG('TH-PM-800-800-2.jpg 1.png')}                   alt="TH PM" />
-          <StyledProductImg className="blt-s-pm" src={IMG('Bolaite_BLT-150A_S 1.png')}                    alt="Bolaite BLT S PM" />
-          <StyledProductImg className="blt-opm"  src={IMG('Bolaite_BLT-150A_-OPM_改-800.jpg (1) 1.png')}  alt="Bolaite BLT OPM" />
+          <StyledProductImg
+            className="th-pm"
+            src={IMG('TH-PM-800-800-2.jpg 1.png')}
+            alt="Винтовой компрессор Bolaite TH PM — купить в Иркутске, Новая Техника"
+            width={580}
+            height={580}
+            {...heroImageProps}
+          />
+          <StyledProductImg
+            className="blt-s-pm"
+            src={IMG('Bolaite_BLT-150A_S 1.png')}
+            alt="Промышленный винтовой компрессор Bolaite BLT S PM в Иркутске"
+            {...lazyImageProps(700, 700)}
+          />
+          <StyledProductImg
+            className="blt-opm"
+            src={IMG('Bolaite_BLT-150A_-OPM_改-800.jpg (1) 1.png')}
+            alt="Винтовой компрессор Bolaite BLT OPM — цена и наличие Иркутск"
+            {...lazyImageProps(570, 570)}
+          />
 
           <SpecBlock top={1880} left={340} />
           <SpecBlock top={1880} left={900} />
@@ -774,9 +793,24 @@ const ScrewCompressorsPage = () => {
             с постоянным потреблением воздуха
           </StyledSectionDesc>
 
-          <StyledProductImg className="th11"   src={IMG('th11-800-800.png 1.png')}       alt="TH11" />
-          <StyledProductImg className="lbt"    src={IMG('lbt-350a-800-800.png 1.png')}   alt="LBT 350a" />
-          <StyledProductImg className="blt-s"  src={IMG('blt-150a-s-800-800.png 1.png')} alt="BLT 150a S" />
+          <StyledProductImg
+            className="th11"
+            src={IMG('th11-800-800.png 1.png')}
+            alt="Винтовой компрессор Bolaite TH11 — промышленные воздушные компрессоры Иркутск"
+            {...lazyImageProps(520, 520)}
+          />
+          <StyledProductImg
+            className="lbt"
+            src={IMG('lbt-350a-800-800.png 1.png')}
+            alt="Винтовой компрессор LBT 350A — купить в Иркутске, Новая Техника"
+            {...lazyImageProps(840, 840)}
+          />
+          <StyledProductImg
+            className="blt-s"
+            src={IMG('blt-150a-s-800-800.png 1.png')}
+            alt="Винтовой компрессор Bolaite BLT 150A S — дилер Иркутск"
+            {...lazyImageProps(660, 660)}
+          />
 
           <StyledProductLabel className="label-1">BLT S 40-475 л.с.</StyledProductLabel>
           <StyledProductLabel className="label-2">BLT S 40-750 л.с.</StyledProductLabel>
@@ -794,8 +828,18 @@ const ScrewCompressorsPage = () => {
             txtxt txtxt txttx
           </StyledSectionDesc>
 
-          <StyledProductImg className="laser"   src={IMG('laser-cutting-1-800-800.jpg 1.png')} alt="Laser cutting" />
-          <StyledProductImg className="blt-vfc" src={IMG('BLT-250A-L-VFC-800-800 1.png')}     alt="BLT VFC" />
+          <StyledProductImg
+            className="laser"
+            src={IMG('laser-cutting-1-800-800.jpg 1.png')}
+            alt="Промышленный компрессор для лазерной резки — Иркутск, Новая Техника"
+            {...lazyImageProps(800, 800)}
+          />
+          <StyledProductImg
+            className="blt-vfc"
+            src={IMG('BLT-250A-L-VFC-800-800 1.png')}
+            alt="Винтовой компрессор Bolaite BLT 250A VFC — купить в Иркутске"
+            {...lazyImageProps(930, 930)}
+          />
 
           <SpecBlock top={3310} left={330} />
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import Header from './Header'
+import { heroImageProps, lazyImageProps } from '../utils/imagePerf'
 
 const DESIGN_WIDTH = 1920
 const DESIGN_HEIGHT = 4320
@@ -318,10 +319,11 @@ const StyledAboutLabel = styled.div`
   white-space: nowrap;
 `
 
-const StyledAboutTitle = styled.div`
+const StyledAboutTitle = styled.h1`
   position: absolute;
   top: 1210px;
   left: 118px;
+  margin: 0;
   font-family: Inter, sans-serif;
   font-weight: 600;
   font-size: 52px;
@@ -374,10 +376,11 @@ const StyledCircle = styled.div`
 
 // ─── Certificates Section ─────────────────────────────────────────────────────
 
-const StyledCertTitle = styled.div`
+const StyledCertTitle = styled.h2`
   position: absolute;
   top: 2194px;
   left: 330px;
+  margin: 0;
   font-family: Inter, sans-serif;
   font-weight: 200;
   font-size: 130px;
@@ -763,7 +766,14 @@ const AboutPage = () => {
           <Header />
 
           {/* ── Hero ── */}
-          <StyledImg className="logo-badge" src={IMG('14 - 6 1.png')} alt="Bolaite" />
+          <StyledImg
+            className="logo-badge"
+            src={IMG('14 - 6 1.png')}
+            alt="Bolaite"
+            width={819}
+            height={197}
+            {...heroImageProps}
+          />
 
           <StyledServiceDesc>
             Поставка и обслуживание<br />
@@ -801,11 +811,16 @@ const AboutPage = () => {
           </StyledAboutDesc>
 
           {/* ── Main product image + details ── */}
-          <StyledImg className="compressor" src={IMG('blt-s-pm-6-800-550-1 (1) 1.png')} alt="Компрессор Bolaite" />
-          <StyledImg className="detail-1"   src={IMG('detail1.jpg 1.png')}  alt="Деталь 1" />
-          <StyledImg className="detail-4"   src={IMG('detail4.jpg 1.png')}      alt="Деталь 4" />
-          <StyledImg className="detail-10"  src={IMG('detail10.jpg 1.png')} alt="Деталь 10" />
-          <StyledImg className="detail-11"  src={IMG('detail11.jpg 1.png')} alt="Деталь 11" />
+          <StyledImg
+            className="compressor"
+            src={IMG('blt-s-pm-6-800-550-1 (1) 1.png')}
+            alt="Компрессор Bolaite"
+            {...lazyImageProps(622, 728)}
+          />
+          <StyledImg className="detail-1" src={IMG('detail1.jpg 1.png')} alt="Деталь 1" {...lazyImageProps(138, 136)} />
+          <StyledImg className="detail-4" src={IMG('detail4.jpg 1.png')} alt="Деталь 4" {...lazyImageProps(138, 139)} />
+          <StyledImg className="detail-10" src={IMG('detail10.jpg 1.png')} alt="Деталь 10" {...lazyImageProps(140, 139)} />
+          <StyledImg className="detail-11" src={IMG('detail11.jpg 1.png')} alt="Деталь 11" {...lazyImageProps(142, 139)} />
 
           {/* ── Stats ── */}
           <StyledStatItem className="stat-1">
@@ -829,17 +844,17 @@ const AboutPage = () => {
           </StyledCertDesc>
 
           {/* картинки сертификатов — координаты точно из автогена */}
-          <StyledImg className="cert-iso1" src={IMG('泛亚ISO-英文 1.png')}                    alt="ISO" />
-          <StyledImg className="cert-007"  src={IMG('照片-007 1.png')}                        alt="007" />
-          <StyledImg className="cert-snip" src={IMG('Snipaste_2021-03-23_14-10-30 1.png')}   alt="Snipaste" />
-          <StyledImg className="cert-ce"   src={IMG('CE认证-scaled 1.png')}                   alt="CE" />
-          <StyledImg className="cert-0504" src={IMG('20170310190415_0504 1.png')}             alt="0504" />
-          <StyledImg className="cert-5651" src={IMG('20170310190340_5651 1.png')}             alt="5651" />
-          <StyledImg className="cert-2360" src={IMG('20170310190302_2360 1.png')}             alt="2360" />
-          <StyledImg className="cert-8913" src={IMG('20170310190224_8913 1.png')}             alt="8913" />
-          <StyledImg className="cert-7810" src={IMG('20170310190147_7810 1.png')}             alt="7810" />
-          <StyledImg className="cert-4051" src={IMG('20170310190114_4051 1.png')}             alt="4051" />
-          <StyledImg className="cert-3887" src={IMG('20170310190041_3887 1.png')}             alt="3887" />
+          <StyledImg className="cert-iso1" src={IMG('泛亚ISO-英文 1.png')} alt="ISO" {...lazyImageProps(186, 262)} />
+          <StyledImg className="cert-007" src={IMG('照片-007 1.png')} alt="007" {...lazyImageProps(193, 266)} />
+          <StyledImg className="cert-snip" src={IMG('Snipaste_2021-03-23_14-10-30 1.png')} alt="Snipaste" {...lazyImageProps(182, 264)} />
+          <StyledImg className="cert-ce" src={IMG('CE认证-scaled 1.png')} alt="CE" {...lazyImageProps(189, 267)} />
+          <StyledImg className="cert-0504" src={IMG('20170310190415_0504 1.png')} alt="0504" {...lazyImageProps(375, 265)} />
+          <StyledImg className="cert-5651" src={IMG('20170310190340_5651 1.png')} alt="5651" {...lazyImageProps(187, 265)} />
+          <StyledImg className="cert-2360" src={IMG('20170310190302_2360 1.png')} alt="2360" {...lazyImageProps(375, 266)} />
+          <StyledImg className="cert-8913" src={IMG('20170310190224_8913 1.png')} alt="8913" {...lazyImageProps(345, 267)} />
+          <StyledImg className="cert-7810" src={IMG('20170310190147_7810 1.png')} alt="7810" {...lazyImageProps(187, 264)} />
+          <StyledImg className="cert-4051" src={IMG('20170310190114_4051 1.png')} alt="4051" {...lazyImageProps(187, 264)} />
+          <StyledImg className="cert-3887" src={IMG('20170310190041_3887 1.png')} alt="3887" {...lazyImageProps(187, 265)} />
 
           {/* подписи — координаты точно из автогена */}
           <StyledCertLabel className="c1">Сертификат собрание<br />иностранных инвестиций Bolaite</StyledCertLabel>
