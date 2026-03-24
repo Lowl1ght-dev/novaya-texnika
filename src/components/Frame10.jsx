@@ -162,7 +162,7 @@ const StyledLineEndDot = styled.div`
 
 const StyledRectangle = styled.div`
   position: absolute;
-  background: #979998;
+  background: #6a6c6f;
   z-index: 2;
 
   &.rect-25 { width: 60px; height: 60px; left: 60px; top: 851px; }
@@ -195,7 +195,7 @@ const StyledHeroBrand = styled.div`
 const StyledHeroLine1 = styled(motion.span)`
   display: block;
   width: 100%;
-  color: #9c9e9d;
+  color: #6a6c6f;
   font-size: 150px;
   font-family: Jost, sans-serif;
   font-weight: 900;
@@ -208,7 +208,7 @@ const StyledHeroLine2 = styled(motion.span)`
   display: block;
   width: 100%;
   margin-top: -14px;
-  color: #9c9e9d;
+  color: #6a6c6f;
   font-size: 115px;
   font-family: Jost, sans-serif;
   font-weight: 900;
@@ -250,7 +250,7 @@ const StyledCTATitle = styled.a`
   height: 68px;
   left: 1424px;
   top: 745px;
-  color: #98999B;
+  color: #5c5e61;
   font-size: 45px;
   font-family: Inter;
   font-weight: 400;
@@ -263,7 +263,7 @@ const StyledCTATitle = styled.a`
   display: block;
 
   &:hover {
-    color: #757575;
+    color: #3a3c3f;
   }
 `
 
@@ -287,13 +287,13 @@ const StyledCTAButton = styled.a`
   text-decoration: none;
 
   &:hover {
-    background: #98999B;
+    background: #545454;
   }
 `
 
 const StyledCTAText = styled.div`
   position: absolute;
-  color: #E2E2E2;
+  color: #3a3d42;
   font-size: 24px;
   font-family: Inter;
   font-weight: 400;
@@ -327,7 +327,7 @@ const StyledCompressorTitle = styled.h2`
   top: 1060px;
   margin: 0;
   padding: 0;
-  color: #b0b0b0;
+  color: #656565;
   font-size: 24px;
   font-family: Inter, sans-serif;
   font-weight: 400;
@@ -341,7 +341,7 @@ const StyledProductsTitle = styled.div`
   height: 80px;
   left: 674px;
   top: 1270px;
-  color: #98999B;
+  color: #5c5e61;
   font-size: 64px;
   font-family: Inter;
   font-weight: 400;
@@ -553,8 +553,8 @@ const StyledCompanyTitle = styled.div`
   font-weight: 300;
 
   &.atlas { width: 841px; height: 166px; left: 901px; top: 3460px; }
-  &.bolaite { left: 1122px; top: 3417px; color: #9C9E9D; font-size: 52px; font-weight: 500; }
-  &.swedish { left: 396px; top: 3537px; color: #9C9E9D; font-size: 52px; font-weight: 500; }
+  &.bolaite { left: 1122px; top: 3417px; color: #5f6164; font-size: 52px; font-weight: 500; }
+  &.swedish { left: 396px; top: 3537px; color: #5f6164; font-size: 52px; font-weight: 500; }
 `
 
 const StyledAtlasTitle = styled.div`
@@ -576,7 +576,7 @@ const StyledAtlasSubtitle = styled.div`
   height: 60px;
   left: 467px;
   top: 4462px;
-  color: #A2A7B7;
+  color: #c4c8d4;
   font-size: 50px;
   font-family: Inter;
   font-weight: 500;
@@ -663,7 +663,7 @@ const StyledAtlasCardImage = styled.img`
 const StyledAtlasCardText = styled.div`
   background: white;
   padding: 24px 16px;
-  color: #A2A7B7;
+  color: #4a4d55;
   font-size: 22px;
   font-family: Inter;
   font-weight: 500;
@@ -720,7 +720,7 @@ const StyledContactTitle = styled.div`
   height: 48px;
   left: 1454px;
   top: 5562px;
-  color: #6A6A6A;
+  color: #4a4a4a;
   font-size: 45px;
   font-family: Inter;
   font-weight: 400;
@@ -748,7 +748,7 @@ const StyledFormTitle = styled.h2`
   position: absolute;
   left: 160px;
   top: 5385px;
-  color: #979797;
+  color: #5a5a5a;
   font-size: 120px;
   font-family: Inter;
   font-weight: 100;
@@ -760,7 +760,7 @@ const StyledFormDescription = styled.div`
   left: 547px;
   top: 5520px;
   text-align: center;
-  color: #9C9E9D;
+  color: #5c5c5c;
   font-size: 20px;
   font-family: Inter;
   font-weight: 400;
@@ -769,7 +769,7 @@ const StyledFormDescription = styled.div`
 const StyledContactDetail = styled.div`
   position: absolute;
   text-align: center;
-  color: #6A6A6A;
+  color: #454545;
   font-size: 16px;
   font-family: Inter;
   font-weight: 400;
@@ -797,9 +797,9 @@ const StyledFormInput = styled.input`
   left: 110px;
   padding: 12px 0;
   border: none;
-  border-bottom: 1px solid #9C9E9D;
+  border-bottom: 1px solid #6e7073;
   background: transparent;
-  color: #272B37;
+  color: #1e2128;
   font-size: 20px;
   font-family: Inter;
   font-weight: 400;
@@ -816,16 +816,18 @@ const StyledFormInput = styled.input`
   &.input3 { top: 6010px; }
 `
 
-const StyledFormLabel = styled.div`
+const StyledFormLabel = styled.label`
   position: absolute;
   width: 390px;
   left: 110px;
-  color: #9C9E9D;
+  margin: 0;
+  color: #5c5c5c;
   font-size: 20px;
   font-family: Inter;
   font-weight: 400;
   text-align: center;
   z-index: 100;
+  cursor: inherit;
 
   &.label1 { top: 5780px; }
   &.label2 { top: 5925px; }
@@ -1018,7 +1020,7 @@ const StyledBolaitePlaceholder = styled.div`
   left: 505px;
   top: 3640px;
   width: 700px;
-  color: #9C9E9D;
+  color: #5c5c5c;
   font-size: 24px;
   font-family: Inter;
   font-weight: 400;
@@ -1030,7 +1032,7 @@ const StyledDetailsLink = styled.a`
   position: absolute;
   left: 1275px;
   top: 3920px;
-  color: #98999B;
+  color: #545454;
   font-size: 32px;
   font-family: Inter;
   font-weight: 200;
@@ -1166,7 +1168,7 @@ const Frame10 = () => {
       <StyledDecorativeLine className="bolaite-line-18" />
       <StyledHeroBannerWrap>
         <StyledHeroBannerImg
-          src="/images/maxresdefault 1.png"
+          src="/images/maxresdefault 1.webp"
           alt="Промышленные воздушные компрессоры Bolaite на производстве"
           width={1920}
           height={716}
@@ -1436,28 +1438,40 @@ const Frame10 = () => {
         Если у вас есть вопросы или предложения, пожалуйста, свяжитесь с нами, заполнив форму ниже
       </StyledFormDescription>
 
-      <form onSubmit={handleSubmit} noValidate style={{ position: 'relative' }}>
+      <form onSubmit={handleSubmit} noValidate style={{ position: 'relative' }} aria-label="Форма заявки">
+        <StyledFormLabel className="label1" htmlFor="frame10-name-input">
+          Имя
+        </StyledFormLabel>
         <StyledFormInput
+          id="frame10-name-input"
           className="input1"
           type="text"
           name="Имя"
           value={formName}
           onChange={handleNameChange}
           placeholder=""
+          autoComplete="name"
         />
-        <StyledFormLabel className="label1">Имя</StyledFormLabel>
 
+        <StyledFormLabel className="label2" htmlFor="frame10-email-input">
+          Почта
+        </StyledFormLabel>
         <StyledFormInput
+          id="frame10-email-input"
           className="input2"
           type="email"
           name="Почта"
           value={formEmail}
           onChange={handleEmailChange}
           placeholder=""
+          autoComplete="email"
         />
-        <StyledFormLabel className="label2">Почта</StyledFormLabel>
 
+        <StyledFormLabel className="label3" htmlFor="frame10-phone-input">
+          Номер телефона
+        </StyledFormLabel>
         <StyledFormInput
+          id="frame10-phone-input"
           className="input3"
           type="tel"
           name="Номер телефона"
@@ -1466,8 +1480,8 @@ const Frame10 = () => {
           placeholder=""
           inputMode="numeric"
           maxLength={18}
+          autoComplete="tel"
         />
-        <StyledFormLabel className="label3">Номер телефона</StyledFormLabel>
 
         {formFieldError.includes('name') && (
           <StyledFieldError

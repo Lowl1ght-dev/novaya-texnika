@@ -11,6 +11,7 @@ import ScrewCompressorsPage from './components/ScrewCompressorsPage'
 import OilFreePage from './components/OilFreePage'
 import PortablePage from './components/PortablePage'
 import AboutPage from './components/AboutPage'
+import NotFound from './pages/NotFound'
 import './styles/responsive.css'
 
 const GlobalStyle = createGlobalStyle`
@@ -67,6 +68,7 @@ function App() {
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/portable" element={<PortablePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>

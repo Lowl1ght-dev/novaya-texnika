@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import styled from 'styled-components'
+import headerLogo from '../frontend/images/aboutus/14 - 6 1.png'
 
 const StyledHeaderBackground = styled.div`
   width: 100%;
@@ -53,7 +54,7 @@ const StyledNavText = styled.span`
 
 const StyledNavItem = styled.a`
   position: absolute;
-  color: #757575;
+  color: #545454;
   font-size: 24px;
   font-family: Inter, sans-serif;
   font-weight: 400;
@@ -81,7 +82,7 @@ const StyledNavItem = styled.a`
 
 const StyledContactInfo = styled.div`
   position: absolute;
-  color: #757575;
+  color: #545454;
   font-size: 20px;
   font-family: Inter, sans-serif;
   font-weight: 400;
@@ -102,7 +103,7 @@ const Header = () => {
       <StyledHeaderBackground />
       <StyledLogoLink to="/">
         <StyledLogo
-          src="/images/nt-mark.png"
+          src={headerLogo}
           alt="Новая техника — знак НТ"
           width={120}
           height={52}
