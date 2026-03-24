@@ -647,7 +647,7 @@ const DOT_POSITIONS = [
   { top: 4195.5, left: 1884.5 },
 ]
 
-const IMG = (name) => `/src/frontend/images/aboutus/${name}`
+const IMG = (name) => `/images/aboutus/${name}`
 
 const capitalizeFirst = (str) => {
   if (!str || str.length === 0) return str

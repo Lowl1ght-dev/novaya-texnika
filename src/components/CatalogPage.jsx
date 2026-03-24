@@ -718,7 +718,7 @@ const CatalogPage = () => {
           <Header />
 
           <StyledHeroImage
-            src="/src/frontend/images/frame6/blt-s-pm-6-800-550-1 1.png"
+            src="/images/frame6/blt-s-pm-6-800-550-1 1.png"
             alt="Промышленные воздушные компрессоры и подготовка воздуха Bolaite — Иркутск, Новая Техника"
             width={1030}
             height={1030}
@@ -766,13 +766,13 @@ const CatalogPage = () => {
           </StyledDryerSubtext>
 
           <StyledDryerImage1
-            src="/src/frontend/images/frame6/dryer-800.jpg 1.png"
+            src="/images/frame6/dryer-800.jpg 1.png"
             alt="Рефрижераторный осушитель Bolaite серии BLD — купить в Иркутске"
             {...lazyImageProps(570, 570)}
           />
 
           <StyledDryerImage2
-            src="/src/frontend/images/frame6/BOLAITE-AIR-DYER-800.jpg 1.png"
+            src="/images/frame6/BOLAITE-AIR-DYER-800.jpg 1.png"
             alt="Осушитель сжатого воздуха Bolaite BLR — промышленное оборудование Иркутск"
             {...lazyImageProps(510, 510)}
           />
@@ -802,25 +802,25 @@ const CatalogPage = () => {
           </StyledDryerSpecs>
 
           <StyledFilterImage1
-            src="/src/frontend/images/frame6/blt-filter.png 1.png"
+            src="/images/frame6/blt-filter.png 1.png"
             alt="Фильтр сжатого воздуха Bolaite — запчасти и комплектующие в наличии Иркутск"
             {...lazyImageProps(479, 482)}
           />
 
           <StyledTankImage1
-            src="/src/frontend/images/frame6/Compressed-Air-Storage-Tank-Gas-Tank-Air-Compressor-Parts.jpg 2.png"
+            src="/images/frame6/Compressed-Air-Storage-Tank-Gas-Tank-Air-Compressor-Parts.jpg 2.png"
             alt="Резервуар сжатого воздуха для промышленного компрессора — Иркутск"
             {...lazyImageProps(383, 913)}
           />
 
           <StyledTankImage2
-            src="/src/frontend/images/frame6/Compressed-Air-Storage-Tank-Gas-Tank-Air-Compressor-Parts.jpg 3.png"
+            src="/images/frame6/Compressed-Air-Storage-Tank-Gas-Tank-Air-Compressor-Parts.jpg 3.png"
             alt="Ресивер сжатого воздуха Bolaite — продажа в Иркутске, Новая Техника"
             {...lazyImageProps(270, 1110)}
           />
 
           <StyledTankImage3
-            src="/src/frontend/images/frame6/Compressed-Air-Storage-Tank-Gas-Tank-Air-Compressor-Parts.jpg 1.png"
+            src="/images/frame6/Compressed-Air-Storage-Tank-Gas-Tank-Air-Compressor-Parts.jpg 1.png"
             alt="Резервуар для компрессорной установки — сервис и поставка Иркутск"
             {...lazyImageProps(322, 770)}
           />

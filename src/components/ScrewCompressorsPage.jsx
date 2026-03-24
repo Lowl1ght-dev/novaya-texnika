@@ -592,7 +592,7 @@ const DOT_POSITIONS = [
 
 // ─── Image base path ──────────────────────────────────────────────────────────
 
-const IMG = (name) => `/src/frontend/images/frame8/${name}`
+const IMG = (name) => `/images/frame8/${name}`
 
 const capitalizeFirst = (str) => {
   if (!str || str.length === 0) return str

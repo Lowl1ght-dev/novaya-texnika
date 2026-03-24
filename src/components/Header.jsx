@@ -1,7 +1,6 @@
 import React from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import styled from 'styled-components'
-import headerLogo from '../frontend/images/aboutus/14 - 6 1.png'
 
 const StyledHeaderBackground = styled.div`
   width: 100%;
@@ -103,7 +102,7 @@ const Header = () => {
       <StyledHeaderBackground />
       <StyledLogoLink to="/">
         <StyledLogo
-          src={headerLogo}
+          src="/images/aboutus/14 - 6 1.png"
           alt="Новая техника — знак НТ"
           width={120}
           height={52}
