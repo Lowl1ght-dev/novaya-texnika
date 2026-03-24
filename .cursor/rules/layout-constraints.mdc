@@ -1,9 +1,0 @@
----
-description: Layout constraints for prod-line in Frame10
-globs: **/Frame10.jsx
-alwaysApply: false
----
-
-# Layout Constraints (Frame10)
-
-- **prod-line-1** and **prod-line-2** must NOT overlap **card-large** (left: 617px). Keep width ≤535px (start left: 70px → ends at 605px, 12px gap).

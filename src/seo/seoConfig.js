@@ -1,15 +1,6 @@
 /**
- * SEO по маршрутам (приоритет: Иркутск, «купить», «цена»).
- * 1) / — главный хаб
- * 2) /products — каталог
- * 3) /products/oil-injected — винтовые
- * 4) /products/oil-free — безмасляные
- * 5) /products/portable — передвижные
- * 6) /products/air-treatment — очистка / осушители
- * 7) /parts — запчасти и фильтры
- * 8) /about — о компании / контакты
- *
- * Базовый URL: VITE_SITE_URL в .env
+ * Заголовки, описания и ключевые слова по маршрутам.
+ * Базовый URL сайта: VITE_SITE_URL в .env
  */
 export function getSiteUrl() {
   const raw = import.meta.env.VITE_SITE_URL
@@ -17,7 +8,7 @@ export function getSiteUrl() {
   return 'https://ntechnics.ru'
 }
 
-/** Главная — основной хаб (приоритет: Иркутск, коммерческие запросы) */
+/** Главная */
 const SEO_HOME = {
   title: 'Продажа и обслуживание воздушных компрессоров в Иркутске — Новая Техника',
   description:

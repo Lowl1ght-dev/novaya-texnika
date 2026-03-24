@@ -437,7 +437,6 @@ const StyledImg = styled.img`
   &.detail-4    { top: 1599px; left: 967px;  width: 138px;  height: 139px; }
   &.detail-10   { top: 1800px; left: 943px;  width: 140px;  height: 139px; }
   &.detail-11   { top: 1889px; left: 780px;  width: 142px;  height: 139px; }
-  /* сертификаты — координаты точно из автогена */
   &.cert-iso1   { top: 2870px; left: 797px;  width: 186px; height: 262px; }
   &.cert-007    { top: 2870px; left: 1030px; width: 193px; height: 266px; }
   &.cert-snip   { top: 2868px; left: 568px;  width: 182px; height: 264px; }
@@ -451,7 +450,7 @@ const StyledImg = styled.img`
   &.cert-3887   { top: 2538px; left: 333px;  width: 187px; height: 265px; }
 `
 
-// ─── Form (структура как на продуктовых страницах; тёмный фон секции) ─────────
+// ─── Form ───────────────────────────────────────────────────────────────────
 
 const StyledFormTitle = styled.h2`
   position: absolute;
@@ -843,7 +842,6 @@ const AboutPage = () => {
             по стандартам ISO9001, ISO14001 и OHSAS18001
           </StyledCertDesc>
 
-          {/* картинки сертификатов — координаты точно из автогена */}
           <StyledImg className="cert-iso1" src={IMG('泛亚ISO-英文 1.png')} alt="ISO" {...lazyImageProps(186, 262)} />
           <StyledImg className="cert-007" src={IMG('照片-007 1.png')} alt="007" {...lazyImageProps(193, 266)} />
           <StyledImg className="cert-snip" src={IMG('Snipaste_2021-03-23_14-10-30 1.png')} alt="Snipaste" {...lazyImageProps(182, 264)} />
@@ -856,7 +854,6 @@ const AboutPage = () => {
           <StyledImg className="cert-4051" src={IMG('20170310190114_4051 1.png')} alt="4051" {...lazyImageProps(187, 264)} />
           <StyledImg className="cert-3887" src={IMG('20170310190041_3887 1.png')} alt="3887" {...lazyImageProps(187, 265)} />
 
-          {/* подписи — координаты точно из автогена */}
           <StyledCertLabel className="c1">Сертификат собрание<br />иностранных инвестиций Bolaite</StyledCertLabel>
           <StyledCertLabel className="c2">Письмо-рекларация<br />Atlas Copco</StyledCertLabel>
           <StyledCertLabel className="c3">Сертификат ISO</StyledCertLabel>

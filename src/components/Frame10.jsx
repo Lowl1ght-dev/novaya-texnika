@@ -175,7 +175,7 @@ const StyledRectangle = styled.div`
   &.rect-32 { width: 60px; height: 130px; left: 268px; top: 921px; }
 `
 
-/* Визуальный логотип «НОВАЯ / ТЕХНИКА»; семантический H1 — скрытый SEO-заголовок */
+/* Логотип; основной заголовок страницы — визуально скрыт (sr-only) */
 const StyledHeroBrand = styled.div`
   position: absolute;
   left: 449px;

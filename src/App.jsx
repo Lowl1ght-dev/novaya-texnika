@@ -14,7 +14,7 @@ import AboutPage from './components/AboutPage'
 import './styles/responsive.css'
 
 const GlobalStyle = createGlobalStyle`
-  /* Color variables matching Figma palette */
+  /* Палитра сайта */
   :root {
     --black: #000000;
     --black-70: rgba(0, 0, 0, 0.70);
