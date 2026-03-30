@@ -1193,34 +1193,47 @@ const Frame10 = () => {
       <StyledLineEndDot className="l3-top" />
       <StyledLineEndDot className="l3-bottom" />
 
-      <StyledRectangle className="rect-25" />
-      <StyledRectangle className="rect-26" />
-      <StyledRectangle className="rect-27" />
-      <StyledRectangle className="rect-28" />
-      <StyledRectangle className="rect-29" />
-      <StyledRectangle className="rect-30" />
-      <StyledRectangle className="rect-31" />
-      <StyledRectangle className="rect-32" />
-
       <h1 className="sr-only">
         Продажа и обслуживание воздушных компрессоров в Иркутске
       </h1>
-      <StyledHeroBrand aria-hidden="true">
-        <StyledHeroLine1
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          НОВАЯ
-        </StyledHeroLine1>
-        <StyledHeroLine2
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          ТЕХНИКА
-        </StyledHeroLine2>
-      </StyledHeroBrand>
+
+ <StyledHeroBrand
+  as={motion.div}
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  style={{ 
+    left: '50px',      /* Прижат к левой линии */
+    top: '860px',      /* ОПУСТИЛИ ЕГО (было 780-800) */
+    width: '1050px',    /* Размер для четкости */
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    zIndex: 20
+  }}
+>
+  <img 
+    src="/images/aboutus/14 - 6 1.png" 
+    alt="Логотип Новая Техника" 
+    style={{ width: '100%', height: 'auto', display: 'block' }} 
+  />
+  
+  {/* Подпись под ТЕХНИКА строчными буквами */}
+<div style={{ 
+  color: '#9C9E9D', 
+  fontSize: '24px', 
+  marginTop: '-30px', /* Твой подогнанный отступ */
+  textAlign: 'right',
+  width: '100%',
+  /* Подбираем padding, чтобы край буквы 'ы' совпал с краем 'Я' */
+  paddingRight: '5px', 
+  fontFamily: 'Inter, sans-serif',
+  letterSpacing: '0.5px',
+  lineHeight: '1'
+}}>
+  Воздушные компрессоры
+</div>
+</StyledHeroBrand>
 
       <StyledRightPanel />
       <StyledCallToActionArea />
@@ -1230,8 +1243,6 @@ const Frame10 = () => {
       <StyledCTAText className="text1">Text text text text text text text text Text text text text text</StyledCTAText>
       <StyledCTAText className="text2">Text text text text text text text text Text</StyledCTAText>
       <StyledCTAText className="text3">Text text text text text text text text Text</StyledCTAText>
-
-      <StyledCompressorTitle>Воздушные компрессоры</StyledCompressorTitle>
 
       <StyledDecorativeLine className="h-line-1" />
       <StyledDecorativeLine className="h-line-2" />
@@ -1359,7 +1370,7 @@ const Frame10 = () => {
       </StyledStepCard>
 
       <StyledStepCard className="step-4">
-        <StyledStepTitle>ДОСТАВКА<br/>/ ЗАБОР<br/>СО СКЛАДА</StyledStepTitle>
+        <StyledStepTitle>ДОСТАВКА<br/>/ ЗАБРАТЬ<br/>СО СКЛАДА</StyledStepTitle>
       </StyledStepCard>
 
       <StyledStepCard className="step-5">
