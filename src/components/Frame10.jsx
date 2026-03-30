@@ -465,10 +465,10 @@ const StyledProductSpec = styled.div`
   &.title2 { width: auto; right: 803px; top: 1964px; font-size: 24px; font-weight: 400; }
   &.text3 { width: auto; right: 803px; top: 2022px; font-size: 15px; font-weight: 400; }
   
-  &.title3 { width: 173px; height: 33px; left: 1165px; top: 1961px; font-size: 24px; font-weight: 400; color: #E2E2E2; }
-  &.brand3 { width: 96px; height: 30px; left: 1685px; top: 1961px; font-size: 24px; font-weight: 400; color: #E2E2E2; }
-  &.text4 { width: 73px; height: 20px; left: 1165px; top: 2022px; font-size: 15px; font-weight: 400; color: #E2E2E2; }
-  &.text5 { width: 31px; height: 18px; left: 1747px; top: 2025px; font-size: 15px; font-weight: 400; color: #E2E2E2; }
+  &.title3 { width: auto; height: 33px; left: 1163px; top: 1961px; font-size: 18px; font-weight: 300; color: #E2E2E2; }
+  &.brand3 { width: auto; height: 30px; right: 150px; top: 1961px; font-size: 18px; font-weight: 300; color: #E2E2E2; }
+  &.text4 { width: auto; height: 20px; left: 1163px; top: 2022px; font-size: 12px; font-weight: 300; color: #E2E2E2; }
+  &.text5 { width: auto; height: 18px; right: 150px; top: 2025px; font-size: 12px; font-weight: 300; color: #E2E2E2; }
 `
 
 const StyledCatalogButton = styled.div`
@@ -1315,10 +1315,10 @@ const Frame10 = () => {
       <StyledProductSpec className="title2">Bolaite SPR oil-free scroll</StyledProductSpec>
       <StyledProductSpec className="text3">Безмаслянный воздушный компрессор</StyledProductSpec>
 
-      <StyledProductSpec className="title3">Bltopm 10-175</StyledProductSpec>
-      <StyledProductSpec className="brand3">Ubitech</StyledProductSpec>
-      <StyledProductSpec className="text4">text</StyledProductSpec>
-      <StyledProductSpec className="text5">text</StyledProductSpec>
+      <StyledProductSpec className="title3">Oil free air compressors-BLW Series</StyledProductSpec>
+      <StyledProductSpec className="brand3">Laser cutting-BLT 16bar Series</StyledProductSpec>
+      <StyledProductSpec className="text4">Безмаслянный воздушный компрессор</StyledProductSpec>
+      <StyledProductSpec className="text5">Воздушный компрессор для лазерной резки</StyledProductSpec>
 
       <StyledProductCard2
         className="card-bottom-1"
