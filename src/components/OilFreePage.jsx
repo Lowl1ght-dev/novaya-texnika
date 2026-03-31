@@ -477,7 +477,7 @@ const StyledFormSubtitle = styled.p`
   left: 870px;
   color: #b5b6bb;
   font-family: Inter, sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 24px;
   line-height: 1.3;
   margin: 0;
@@ -817,7 +817,7 @@ const OilFreePage = () => {
             Компрессорное оборудование<br />
             инвестиция в будущее вашего бизнеса
           </StyledDescriptionLeft>
-          
+
           {/* ── Category Nav ── */}
           <StyledCategoryList>
             <StyledCategoryItem 
