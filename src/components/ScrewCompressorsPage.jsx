@@ -949,7 +949,7 @@ const ScrewCompressorsPage = () => {
             left={1031} 
             pressure="8-10 бар" 
             fad="4,9-55 м3/мин" 
-            power="55-2 кВт"
+            power="55-250 кВт"
             align="right"
           />
 
