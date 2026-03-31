@@ -1,23 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { HelmetProvider } from 'react-helmet-async'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import SeoHead from './components/SeoHead'
 import Frame10 from './components/Frame10'
 import Frame4 from './components/Frame4'
 import CatalogPage from './components/CatalogPage'
 import ProductsPage from './components/ProductsPage'
-import ScrewCompressorsPage from './components/ScrewCompressorsPage'
+import ScrewCompressorsPage from './components/ScrewCompressorsPage' // ПРОВЕРЬ ЭТУ СТРОКУ
 import OilFreePage from './components/OilFreePage'
 import PortablePage from './components/PortablePage'
 import AboutPage from './components/AboutPage'
 import NotFound from './pages/NotFound'
-import './styles/responsive.css'
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 const GlobalStyle = createGlobalStyle`
-  /* Палитра сайта */
   :root {
     --black: #000000;
     --black-70: rgba(0, 0, 0, 0.70);
@@ -42,8 +38,6 @@ const GlobalStyle = createGlobalStyle`
     --gray-e2: #E2E2E2;
     --gray-f0: #F0F1F0;
     --white: #FFFFFF;
-    
-    /* Gradients */
     --gradient-1: linear-gradient(180deg, #030C1B 0%, #8F9197 42%, white 95%);
     --gradient-2: linear-gradient(180deg, white 12%, #272B37 100%);
     --gradient-3: linear-gradient(180deg, #F9F9F9 0%, #868686 100%);
@@ -66,7 +60,6 @@ function ScrollToAnchor() {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       }, 100);
-      
       return () => clearTimeout(timer);
     }
   }, [hash, pathname]);
@@ -81,17 +74,22 @@ function App() {
         <GlobalStyle />
         <SeoHead />
         <ScrollToAnchor />
-        <Routes>
-          <Route path="/" element={<Frame10 />} />
-          <Route path="/parts" element={<Frame4 />} />
-          <Route path="/products/air-treatment" element={<CatalogPage />} />
-          <Route path="/products/oil-injected" element={<ScrewCompressorsPage />} />
-          <Route path="/products/oil-free" element={<OilFreePage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/portable" element={<PortablePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+<Routes>
+  <Route path="/" element={<Frame10 />} />
+  <Route path="/parts" element={<Frame4 />} />
+
+  {/* При заходе на /products сразу кидаем на первый подкаталог */}
+  <Route path="/products" element={<Navigate to="/products/oil-injected" replace />} />
+
+  {/* Реальные страницы с контентом (таблицами и т.д.) */}
+  <Route path="/products/oil-injected" element={<ScrewCompressorsPage />} /> 
+  <Route path="/products/oil-free" element={<OilFreePage />} />
+  <Route path="/products/portable" element={<PortablePage />} />
+  <Route path="/products/air-treatment" element={<CatalogPage />} />
+  
+  <Route path="/about" element={<AboutPage />} />
+  <Route path="*" element={<NotFound />} />
+</Routes>
       </BrowserRouter>
     </HelmetProvider>
   )

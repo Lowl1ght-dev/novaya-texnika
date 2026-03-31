@@ -91,7 +91,7 @@ const StyledContactInfo = styled.div`
   &.phone { left: 1626px; top: 55px; }
 `
 
-const pathToNav = { '/': 'nav-1', '/products': 'nav-2', '/parts': 'nav-3', '/about': 'nav-4', '/contacts': 'nav-5' }
+const pathToNav = { '/': 'nav-1', '/products': 'nav-2', '/products/oil-injected': 'nav-2', '/parts': 'nav-3', '/about': 'nav-4', '/contacts': 'nav-5' }
 
 const Header = () => {
   const { pathname } = useLocation()
@@ -112,7 +112,7 @@ const Header = () => {
         />
       </StyledLogoLink>
       <StyledNavItem href="/" className={`nav-1 nav-item ${activeNav === 'nav-1' ? 'active' : ''}`}><StyledNavText>ГЛАВНАЯ</StyledNavText></StyledNavItem>
-      <StyledNavItem href="/products" className={`nav-2 nav-item ${activeNav === 'nav-2' ? 'active' : ''}`}><StyledNavText>ПРОДУКЦИЯ</StyledNavText></StyledNavItem>
+      <StyledNavItem as={Link} to="/products/oil-injected" className={`nav-2 nav-item ${activeNav === 'nav-2' ? 'active' : ''}`}><StyledNavText>ПРОДУКЦИЯ</StyledNavText></StyledNavItem>
       <StyledNavItem href="/parts" className={`nav-3 nav-item ${activeNav === 'nav-3' ? 'active' : ''}`}><StyledNavText>ЗАПЧАСТИ</StyledNavText></StyledNavItem>
       <StyledNavItem href="/about" className={`nav-4 nav-item ${activeNav === 'nav-4' ? 'active' : ''}`}><StyledNavText>О НАС</StyledNavText></StyledNavItem>
       <StyledNavItem as={Link} to="/" onClick={(e) => { e.preventDefault(); window.location.href = '/#request-form'; }} className={`nav-5 nav-item ${activeNav === 'nav-5' ? 'active' : ''}`}><StyledNavText>КОНТАКТЫ</StyledNavText></StyledNavItem>

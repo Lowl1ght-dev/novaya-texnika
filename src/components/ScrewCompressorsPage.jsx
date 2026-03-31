@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import Header from './Header'
 import { heroImageProps, lazyImageProps } from '../utils/imagePerf'
 
@@ -220,9 +220,9 @@ const StyledCategoryList = styled.div`
   z-index: 11;
 `
 
-const StyledCategoryItem = styled.span`
+const StyledCategoryItem = styled(Link)`
   font-family: Inter, sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   color: #575757;
   text-align: right;
@@ -231,9 +231,24 @@ const StyledCategoryItem = styled.span`
   display: flex;
   align-items: flex-start;
   white-space: nowrap;
+  
+  /* Убираем оформление стандартной ссылки */
+  text-decoration: none; 
+  cursor: pointer;
+  z-index: 100;
+  position: relative;
 
-  &.active { color: #03043c; }
-`
+  /* Эффект при наведении */
+  &:hover {
+    color: #03043c;
+    opacity: 0.8;
+  }
+
+  &.active { 
+    color: #03043c; 
+    font-weight: 500; /* Делаем активный пункт еще жирнее */
+  }
+`;
 
 // ─── СВЯЗАТЬСЯ box ────────────────────────────────────────────────────────────
 
@@ -335,22 +350,29 @@ const StyledProductLabel = styled.div`
   &.label-3 { top: 2440px; left: 1482px; }
 `
 
-// ─── Spec Block ───────────────────────────────────────────────────────────────
+// ─── Spec Block (Universal) ───────────────────────────────────────────────────
 
 const StyledSpecBlock = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 0;
-`
+  z-index: 10;
+  
+  /* Если align="left", прижимаем текст вправо к линии. 
+     Если align="right", прижимаем текст влево к линии. */
+  align-items: ${props => props.align === 'right' ? 'flex-start' : 'flex-end'};
+  text-align: ${props => props.align === 'right' ? 'left' : 'right'};
+`;
 
 const StyledSpecLabel = styled.div`
   font-family: Inter, sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
   color: #a5a5a5;
   white-space: nowrap;
-`
+  line-height: 1.2;
+  width: 100%;
+`;
 
 const StyledSpecValue = styled.div`
   font-family: Inter, sans-serif;
@@ -358,25 +380,31 @@ const StyledSpecValue = styled.div`
   font-size: 16px;
   color: #d2d2d2;
   white-space: nowrap;
-  margin-top: 6px;
-`
+  margin-top: 2px;
+  line-height: 1.2;
+  width: 100%;
+`;
 
 const StyledSpecGap = styled.div`
   height: 16px;
-`
+`;
 
-const SpecBlock = ({ top, left }) => (
-  <StyledSpecBlock style={{ top, left }}>
-    <StyledSpecLabel>Макс рабочее давление:</StyledSpecLabel>
-    <StyledSpecValue>8-10 бар</StyledSpecValue>
+const SpecBlock = ({ top, left, pressure, fad, power, align = 'left' }) => (
+  <StyledSpecBlock style={{ top, left }} align={align}>
+    <StyledSpecLabel>Макс. рабочее давление:</StyledSpecLabel>
+    <StyledSpecValue>{pressure}</StyledSpecValue>
+    
     <StyledSpecGap />
+    
     <StyledSpecLabel>Мощность FAD*</StyledSpecLabel>
-    <StyledSpecValue>0,25-13 м3/мин</StyledSpecValue>
+    <StyledSpecValue>{fad}</StyledSpecValue>
+    
     <StyledSpecGap />
+    
     <StyledSpecLabel>Мощность двигателя*</StyledSpecLabel>
-    <StyledSpecValue>7,5-25 кВт</StyledSpecValue>
+    <StyledSpecValue>{power}</StyledSpecValue>
   </StyledSpecBlock>
-)
+);
 
 // ─── Form (как на /parts и CatalogPage) ───────────────────────────────────────
 
@@ -734,16 +762,31 @@ const ScrewCompressorsPage = () => {
 
           {/* ── Category Nav ── */}
           <StyledCategoryList>
-            <StyledCategoryItem className={pathname === '/products/oil-injected' ? 'active' : ''}>
+            <StyledCategoryItem 
+              to="/products/oil-injected" 
+              className={pathname === '/products/oil-injected' ? 'active' : ''}
+            >
               ВИНТОВЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
             </StyledCategoryItem>
-            <StyledCategoryItem className={pathname === '/products/oil-free' ? 'active' : ''}>
+
+            <StyledCategoryItem 
+              to="/products/oil-free" 
+              className={pathname === '/products/oil-free' ? 'active' : ''}
+            >
               БЕЗМАСЛЯНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
             </StyledCategoryItem>
-            <StyledCategoryItem className={pathname === '/products/portable' ? 'active' : ''}>
+
+            <StyledCategoryItem 
+              to="/products/portable" 
+              className={pathname === '/products/portable' ? 'active' : ''}
+            >
               ПОРТАТИВНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
             </StyledCategoryItem>
-            <StyledCategoryItem className={pathname === '/products/air-treatment' ? 'active' : ''}>
+
+            <StyledCategoryItem 
+              to="/products/air-treatment" 
+              className={pathname === '/products/air-treatment' ? 'active' : ''}
+            >
               ОБОРУДОВАНИЕ ДЛЯ ОЧИСТКИ ВОЗДУХА
             </StyledCategoryItem>
           </StyledCategoryList>
@@ -781,9 +824,30 @@ const ScrewCompressorsPage = () => {
             {...lazyImageProps(570, 570)}
           />
 
-          <SpecBlock top={1880} left={340} />
-          <SpecBlock top={1880} left={900} />
-          <SpecBlock top={1880} left={1199} />
+          {/* ── Секция OPM ── */}
+          <SpecBlock 
+            top={1880} 
+            left={340} 
+            pressure="8-10 бар" 
+            fad="0,25-13 м3/мин" 
+            power="7,5-25 кВт" 
+          />
+
+          <SpecBlock 
+            top={1880} 
+            left={900} 
+            pressure="6-13 бар" 
+            fad="0,29-33 м3/мин" 
+            power="7,5-160 кВт" 
+          />
+          <SpecBlock 
+            top={1880} 
+            left={1199} 
+            pressure="6-13 бар" 
+            fad="0,19-42,6 м3/мин" 
+            power="7,5-250 кВт"
+            align="right"
+          />
 
           {/* ── Fixed Speed Section ── */}
           <StyledSectionTitle className="fixed-title">Привод с фиксированной скоростью</StyledSectionTitle>
@@ -813,19 +877,41 @@ const ScrewCompressorsPage = () => {
           />
 
           <StyledProductLabel className="label-1">BLT S 40-475 л.с.</StyledProductLabel>
-          <StyledProductLabel className="label-2">BLT S 40-750 л.с.</StyledProductLabel>
-          <StyledProductLabel className="label-3">TH S-100 л.с.</StyledProductLabel>
+          <StyledProductLabel className="label-2">BLT 5-750 л.с.</StyledProductLabel>
+          <StyledProductLabel className="label-3">TH 5-100 л.с.</StyledProductLabel>
 
-          <SpecBlock top={2930} left={340} />
-          <SpecBlock top={2930} left={681} />
-          <SpecBlock top={2930} left={1390} />
+            <SpecBlock 
+            top={2930} 
+            left={160} 
+            pressure="7-13 бар - 102-189 фунтов на кв. дюйм" 
+            fad="0,48-101 м3/мин - 17-3566 куб. футов в минуту" 
+            power="4-560 кВт - 5-750 л.с."
+            align="left"
+          />
+
+            <SpecBlock 
+            top={2930} 
+            left={681} 
+            pressure="7-13 бар - 102-189 фунтов на кв. дюйм" 
+            fad="0,48-101 м3/мин - 17-3566 куб. футов в минуту" 
+            power="4-560 кВт - 5-750 л.с."
+            align="right"
+          />
+            <SpecBlock 
+            top={2930} 
+            left={1390} 
+            pressure="8-10 бар" 
+            fad="0,47-13,0 м3/мин" 
+            power="4-75 кВт"
+            align="right"
+          />
 
           {/* ── Laser Section ── */}
           <StyledSectionTitle className="laser-title">Компрессоры для лазерной резки</StyledSectionTitle>
           <StyledSectionDesc className="laser-desc">
-            Textxtxttx txtxttx txtxxttx<br />
-            textxet txtxet txettx<br />
-            txtxt txtxt txttx
+            Винтовой воздушный компрессор<br />
+            высокого давления 16 бар<br />
+            для станка лазерной резки.
           </StyledSectionDesc>
 
           <StyledProductImg
@@ -841,17 +927,31 @@ const ScrewCompressorsPage = () => {
             {...lazyImageProps(930, 930)}
           />
 
-          <SpecBlock top={3310} left={330} />
+            <SpecBlock 
+            top={3310} 
+            left={330} 
+            pressure="16 бар" 
+            fad="0,95-2,1 м3/мин" 
+            power="11-22 кВт"
+            align="right"
+          />
 
           {/* ── Low Pressure Section ── */}
           <StyledSectionTitle className="low-title">Компрессоры низкого давления</StyledSectionTitle>
           <StyledSectionDesc className="low-desc">
-            Textxtxttx txtxttx txtxxttx<br />
-            textxet txtxet txettx<br />
-            txtxt txtxt txttx
+            Винтовые воздушные компрессоры<br />
+            низкого давления 3,5 - 5,5 бар<br />
+            для оптимальной эффективности.
           </StyledSectionDesc>
 
-          <SpecBlock top={4050} left={1031} />
+            <SpecBlock 
+            top={4050} 
+            left={1031} 
+            pressure="8-10 бар" 
+            fad="4,9-55 м3/мин" 
+            power="55-250 кВт"
+            align="right"
+          />
 
           <StyledFormTitle id="request-form">ОСТАВИТЬ ЗАЯВКУ</StyledFormTitle>
 

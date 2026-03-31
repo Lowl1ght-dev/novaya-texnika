@@ -123,42 +123,54 @@ const StyledHeaderVLine = styled.div`
   &.vl-4 { top: 16px; left: 1318px; height: 75px; }
 `
 
-const StyledLineEndDot = styled.div`
+const DotWrapper = styled.svg`
   position: absolute;
-  width: 8px;
-  height: 8px;
-  box-sizing: border-box;
-  background: white;
-  border: 1px solid #9C9E9D;
-  border-radius: 50%;
+  width: 6px !important;
+  height: 6px !important;
   z-index: 150;
+  pointer-events: none;
+  overflow: visible;
 
-  &.v3-top { left: 544.5px; top: 11.5px; }
-  &.v3-bottom { left: 544.5px; top: 86.5px; }
-  &.l1-top { left: 840.5px; top: 11.5px; }
-  &.l1-bottom { left: 840.5px; top: 86.5px; }
-  &.l2-top { left: 1114.5px; top: 11.5px; }
-  &.l2-bottom { left: 1114.5px; top: 86.5px; }
-  &.l3-top { left: 1314.5px; top: 11.5px; }
-  &.l3-bottom { left: 1314.5px; top: 86.5px; }
-  &.left-top { left: 26.5px; top: 11.5px; }
-  &.left-bottom { left: 26.5px; top: 86.5px; }
-  &.right-top { left: 1884.5px; top: 11.5px; }
-  &.right-bottom { left: 1884.5px; top: 86.5px; }
+  /* Твои координаты */
+  &.v3-top { left: 546px; top: 12px; }
+  &.v3-bottom { left: 545px; top: 87px; }
+  &.l1-top { left: 842px; top: 12px; }
+  &.l1-bottom { left: 842px; top: 87px; }
+  &.l2-top { left: 1115px; top: 12px; }
+  &.l2-bottom { left: 1115px; top: 87px; }
+  &.l3-top { left: 1315px; top: 12px; }
+  &.l3-bottom { left: 1315px; top: 87px; }
+  &.left-top { left: 28px; top: 12px; }
+  &.left-bottom { left: 28px; top: 87px; }
+  &.right-top { left: 1885px; top: 12px; }
+  &.right-bottom { left: 1885px; top: 87px; }
+  /* СВЕРХУ ТОЧКИ ХЕДЕРА */
+  
   &.rect9-left { left: 27px; top: 2144px; }
   &.rect9-right { left: 1885px; top: 2145px; }
-  &.rect9-bottom-left { left: 27px; top: 3224px; }
+
+  &.rect9-bottom-left { left: 28px; top: 3224px; }
   &.rect9-bottom-right { left: 1885px; top: 3224px; }
-  &.atlas-line1-left { left: 27px; top: 4346px; }
-  &.atlas-line1-right { left: 1885px; top: 4346px; }
-  &.atlas-line2-left { left: 27px; top: 4436px; }
-  &.atlas-line2-right { left: 1885px; top: 4436px; }
-  &.atlas-line3-left { left: 27px; top: 5375px; }
-  &.atlas-line3-right { left: 1885px; top: 5375px; }
-  /* line-bottom контактов (y=6360), как на продуктовых страницах */
-  &.contact-line-bottom-left { left: 27px; top: 6356px; }
-  &.contact-line-bottom-right { left: 1885px; top: 6356px; }
-`
+  
+  &.atlas-line1-left { left: 28px; top: 4347px; }
+  &.atlas-line1-right { left: 1885px; top: 4347px; }
+  &.atlas-line2-left { left: 28px; top: 4437px; }
+  &.atlas-line2-right { left: 1885px; top: 4437px; }
+
+  &.atlas-line3-left { left: 28px; top: 5377px; }
+  &.atlas-line3-right { left: 1885px; top: 5377px; }
+
+  &.contact-line-bottom-left { left: 28px; top: 6357px; }
+  &.contact-line-bottom-right { left: 1885px; top: 6358px; }
+`;
+
+// 2. Затем объявляем сам компонент (рисует круг)
+const StyledLineEndDot = ({ className }) => (
+  <DotWrapper className={className} viewBox="0 0 6 6">
+    <circle cx="3" cy="3" r="2.5" fill="white" stroke="#9C9E9D" strokeWidth="1" />
+  </DotWrapper>
+);
+
 
 const StyledRectangle = styled.div`
   position: absolute;

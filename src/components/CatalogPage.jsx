@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 import Header from './Header'
 import { heroImageProps, lazyImageProps } from '../utils/imagePerf'
+import { Link } from 'react-router-dom';
 
 const DESIGN_WIDTH = 1920
 const DESIGN_HEIGHT = 4315
@@ -212,7 +213,7 @@ const StyledCategoryList = styled.div`
   z-index: 11;
 `
 
-const StyledCategoryItem = styled.span`
+const StyledCategoryItem = styled(Link)` // Теперь это сразу ссылка!
   font-family: Inter, sans-serif;
   font-weight: 600;
   font-size: 18px;
@@ -223,9 +224,23 @@ const StyledCategoryItem = styled.span`
   display: flex;
   align-items: flex-start;
   white-space: nowrap;
+  text-decoration: none; /* Убираем стандартное подчеркивание ссылки */
+  
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: 10; /* Поднимаем выше линий, чтобы точно кликалось */
 
-  &.active { color: #03043c; }
-`
+  &:hover {
+    opacity: 0.7;
+    color: #03043c;
+  }
+
+  &.active { 
+    color: #03043c; 
+    font-weight: bold;
+  }
+`;
 
 const StyledEquipmentLabel = styled.div`
   position: absolute;
@@ -741,11 +756,30 @@ const CatalogPage = () => {
           </StyledHeroSubtext>
 
           <StyledCategoryList>
-            <StyledCategoryItem className={pathname === '/products/oil-injected' ? 'active' : ''}>ВИНТОВЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ</StyledCategoryItem>
-            <StyledCategoryItem className={pathname === '/products/oil-free' ? 'active' : ''}>БЕЗМАСЛЯНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ</StyledCategoryItem>
-            <StyledCategoryItem className={pathname === '/products/portable' ? 'active' : ''}>ПОРТАТИВНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ</StyledCategoryItem>
-            <StyledCategoryItem className={pathname === '/products/air-treatment' ? 'active' : ''}>ОБОРУДОВАНИЕ ДЛЯ ОЧИСТКИ ВОЗДУХА</StyledCategoryItem>
-          </StyledCategoryList>
+            <Link to="/products/oil-injected" style={{ textDecoration: 'none' }}>
+              <StyledCategoryItem className={pathname === '/products/oil-injected' ? 'active' : ''}>
+                ВИНТОВЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
+              </StyledCategoryItem>
+            </Link>
+
+            <Link to="/products/oil-free" style={{ textDecoration: 'none' }}>
+              <StyledCategoryItem className={pathname === '/products/oil-free' ? 'active' : ''}>
+                БЕЗМАСЛЯНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
+              </StyledCategoryItem>
+            </Link>
+
+            <Link to="/products/portable" style={{ textDecoration: 'none' }}>
+              <StyledCategoryItem className={pathname === '/products/portable' ? 'active' : ''}>
+                ПОРТАТИВНЫЕ ВОЗДУШНЫЕ КОМПРЕССОРЫ
+              </StyledCategoryItem>
+            </Link>
+
+            <Link to="/products/air-treatment" style={{ textDecoration: 'none' }}>
+              <StyledCategoryItem className={pathname === '/products/air-treatment' ? 'active' : ''}>
+                ОБОРУДОВАНИЕ ДЛЯ ОЧИСТКИ ВОЗДУХА
+              </StyledCategoryItem>
+            </Link>
+            </StyledCategoryList>
 
           <StyledEquipmentLabel className="main">ОБОРУДОВАНИЕ</StyledEquipmentLabel>
           <StyledEquipmentLabel className="sub">ДЛЯ ОЧИСТКИ ВОЗДУХА</StyledEquipmentLabel>
