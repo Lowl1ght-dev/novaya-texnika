@@ -155,16 +155,18 @@ const StyledContactBoxVLine = styled.div`
   &.right { top: 995px; left: 844px; height: 70px; }
 `
 
-const StyledDot = styled.div`
+const StyledDot = styled.svg`
   position: absolute;
-  width: 8px;
-  height: 8px;
-  box-sizing: border-box;
-  background: white;
-  border: 1px solid #9c9e9d;
-  border-radius: 50%;
+  width: 6px !important;
+  height: 6px !important;
+  min-width: 6px !important;
+  min-height: 6px !important;
   z-index: 150;
-`
+  pointer-events: none;
+  /* Центрируем точку, чтобы она сидела СЕРЕДИНОЙ на линии */
+  transform: translate(-50%, -50%); 
+  overflow: visible;
+`;
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
@@ -563,48 +565,49 @@ const StyledFooterText = styled.p`
 // ─── Dots ─────────────────────────────────────────────────────────────────────
 
 const DOT_POSITIONS = [
-  { top: 11.5, left: 26.5  },
-  { top: 86.5, left: 26.5  },
-  { top: 11.5, left: 544.5 },
-  { top: 86.5, left: 544.5 },
-  { top: 11.5, left: 840.5 },
-  { top: 86.5, left: 840.5 },
-  { top: 11.5, left: 1114.5 },
-  { top: 86.5, left: 1114.5 },
-  { top: 11.5, left: 1314.5 },
-  { top: 86.5, left: 1314.5 },
-  { top: 11.5, left: 1884.5 },
-  { top: 86.5, left: 1884.5 },
-  { top: 562,  left: 545  },
-  { top: 627,  left: 840  },
-  { top: 697,  left: 1088 },
-  { top: 767,  left: 1256 },
-  { top: 991,  left: 545  },
-  { top: 1060, left: 545  },
-  { top: 991,  left: 840  },
-  { top: 1060, left: 840  },
+  { top: 15, left: 31  },
+  { top: 90, left: 31  },
+  { top: 15, left: 549 },
+  { top: 90, left: 548 },
+  { top: 15, left: 845 },
+  { top: 90, left: 845 },
+  { top: 15, left: 1118 },
+  { top: 90, left: 1118 },
+  { top: 15, left: 1318 },
+  { top: 90, left: 1318 },
+  { top: 15, left: 1888 },
+  { top: 90, left: 1888 },
+  //header
+  { top: 565,  left: 549  },
+  { top: 630,  left: 845  },
+  { top: 701,  left: 1088 },
+  { top: 770,  left: 1256 },
+  { top: 994,  left: 549  },
+  { top: 1064, left: 549  },
+  { top: 994,  left: 845  },
+  { top: 1064, left: 845  },
   /* section-1: боковые полосы (линия 1064px) */
-  { top: 1061, left: 26.5   },
-  { top: 1061, left: 1884.5 },
+  { top: 1064, left: 31   },
+  { top: 1064, left: 1889 },
   /* section-2: как section-3 (линия 2145px) */
-  { top: 2142, left: 26.5   },
-  { top: 2142, left: 545    },
-  { top: 2142, left: 1884.5 },
+  { top: 2145, left: 31   },
+  { top: 2145, left: 549  },
+  { top: 2145, left: 1889 },
   /* section-3 × боковые полосы + вертикали 548 / 844 */
-  { top: 3217, left: 26.5   },
-  { top: 3217, left: 545    },
-  { top: 3217, left: 1884.5 },
+  { top: 3220, left: 31   },
+  { top: 3220, left: 549  },
+  { top: 3220, left: 1889 },
   /* right-group: центры трёх изображений на правой полосе */
-  { top: 1398.5, left: 1884.5 },
-  { top: 1605,   left: 1884.5 },
-  { top: 1792,   left: 1884.5 },
+  { top: 1398.5, left: 1889 },
+  { top: 1605,   left: 1889 },
+  { top: 1792,   left: 1889 },
   /* left-group: центры трёх изображений на левой полосе */
-  { top: 2449,   left: 26.5 },
-  { top: 2671.5, left: 26.5 },
-  { top: 2903,   left: 26.5 },
+  { top: 2449,   left: 31 },
+  { top: 2671.5, left: 31 },
+  { top: 2903,   left: 31 },
   /* bottom line (4199px): боковые полосы */
-  { top: 4195.5, left: 26.5   },
-  { top: 4195.5, left: 1884.5 },
+  { top: 4199, left: 31 },
+  { top: 4199, left: 1889 },
 ]
 
 const IMG = (name) => `/images/frame12/${name}`
@@ -715,9 +718,27 @@ const PortablePage = () => {
           <StyledContactBoxVLine className="left" />
           <StyledContactBoxVLine className="right" />
 
-          {DOT_POSITIONS.map((pos, i) => (
-            <StyledDot key={i} style={{ top: pos.top, left: pos.left }} />
-          ))}
+        {DOT_POSITIONS.map((pos, i) => (
+          <StyledDot 
+            key={i} 
+            /* Используем Math.round, чтобы убрать .5 и сделать точку четкой */
+            style={{ 
+              top: `${Math.round(pos.top)}px`, 
+              left: `${Math.round(pos.left)}px` 
+            }} 
+            viewBox="0 0 6 6"
+          >
+            {/* Рисуем сам белый кружок внутри SVG-контейнера */}
+            <circle 
+              cx="3" 
+              cy="3" 
+              r="2.5" 
+              fill="white" 
+              stroke="#9C9E9D" 
+              strokeWidth="1" 
+            />
+          </StyledDot>
+        ))}
 
           {/* ── Header ── */}
           <Header />
