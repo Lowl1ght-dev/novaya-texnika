@@ -418,45 +418,57 @@ const StyledProductImg = styled.img`
   &.blw       { top: 2497px; left: 510px;  width: 717px; height: 717px; object-fit: cover; }
 `
 
-// ─── Spec Block ───────────────────────────────────────────────────────────────
+// ─── Spec Block (Finalized with Align) ────────────────────────────────────────
 
 const StyledSpecBlock = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-`
+  /* Прижимаем всё содержимое блока к правому краю (к линии) */
+  align-items: flex-end; 
+  text-align: right;
+  z-index: 10;
+`;
 
 const StyledSpecLabel = styled.div`
   font-family: Inter, sans-serif;
-  font-weight: 600;
+  font-weight: 500; /* Делаем заголовок чуть легче, как на макете */
   font-size: 16px;
   color: #a5a5a5;
   white-space: nowrap;
-`
+  line-height: 1.2;
+`;
 
 const StyledSpecValue = styled.div`
   font-family: Inter, sans-serif;
-  font-weight: 600;
+  font-weight: 600; /* Значения оставляем жирными (акцент) */
   font-size: 16px;
   color: #d2d2d2;
   white-space: nowrap;
-  margin-top: 6px;
-`
+  margin-top: 4px; /* Отступ от заголовка к числу */
+  line-height: 1.2;
+`;
 
-const StyledSpecGap = styled.div`height: 16px;`
+const StyledSpecGap = styled.div`
+  height: 16px; /* Расстояние между парами характеристик */
+`;
 
-const SpecBlock = ({ top, left }) => (
+const SpecBlock = ({ top, left, pressure, fad, power }) => (
   <StyledSpecBlock style={{ top, left }}>
-    <StyledSpecLabel>Макс рабочее давление:</StyledSpecLabel>
-    <StyledSpecValue>8-10 бар</StyledSpecValue>
+    <StyledSpecLabel>Макс. рабочее давление:</StyledSpecLabel>
+    <StyledSpecValue>{pressure || '8-10 бар'}</StyledSpecValue>
+    
     <StyledSpecGap />
+    
     <StyledSpecLabel>Мощность FAD*</StyledSpecLabel>
-    <StyledSpecValue>0,25-13 м3/мин</StyledSpecValue>
+    <StyledSpecValue>{fad || '0,25-13 м3/мин'}</StyledSpecValue>
+    
     <StyledSpecGap />
+    
     <StyledSpecLabel>Мощность двигателя*</StyledSpecLabel>
-    <StyledSpecValue>7,5-25 кВт</StyledSpecValue>
+    <StyledSpecValue>{power || '7,5-25 кВт'}</StyledSpecValue>
   </StyledSpecBlock>
-)
+);
 
 // ─── Form ─────────────────────────────────────────────────────────────────────
 
@@ -877,7 +889,13 @@ const OilFreePage = () => {
           />
           <StyledProductLabel1>TH PM 10-100 л.с.</StyledProductLabel1>
 
-          <SpecBlock top={1930} left={323} />
+          <SpecBlock 
+            top={1930}
+            left={323} 
+            pressure="8-10 бар" 
+            fad="6,8-147 м3/ч" 
+            power="1,5-4*5,5 кВт" 
+          />
 
           {/* ── Water Lubricated Section ── */}
           <StyledWaterTitle>Безмасляный компрессор с водяной смазкой</StyledWaterTitle>
@@ -905,8 +923,14 @@ const OilFreePage = () => {
             {...lazyImageProps(717, 717)}
           />
 
-          <StyledProductLabel2>BLW-50A</StyledProductLabel2>
-          <SpecBlock top={2312} left={323} />
+          <StyledProductLabel2>BLW-50A</StyledProductLabel2>  
+          <SpecBlock 
+            top={2312}
+            left={323} 
+            pressure="8-10 бар" 
+            fad="6,8-147 м3/ч" 
+            power="1,5-4*5,5 кВт" 
+          />
 
           {/* ── Bolaite Brand Section ── */}
           <StyledBolaiteLabel>Безмаслянный компрессор</StyledBolaiteLabel>
