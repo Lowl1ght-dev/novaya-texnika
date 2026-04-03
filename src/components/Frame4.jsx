@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import Header from './Header'
+import { useLocation, Link } from 'react-router-dom'
 
 import { heroImageProps, lazyImageProps } from '../utils/imagePerf'
 
@@ -176,16 +177,18 @@ const StyledRightMargin = styled.div`
   z-index: 50;
   pointer-events: none;
 `
-const StyledHeaderDot = styled.div`
+const StyledDot = styled.svg`
   position: absolute;
-  width: 8px;
-  height: 8px;
-  box-sizing: border-box;
-  background: white;
-  border: 1px solid #9C9E9D;
-  border-radius: 50%;
+  width: 6px !important;
+  height: 6px !important;
+  min-width: 6px !important;
+  min-height: 6px !important;
   z-index: 150;
-`
+  pointer-events: none;
+  /* Центрируем точку, чтобы она сидела СЕРЕДИНОЙ на линии */
+  transform: translate(-50%, -50%); 
+  overflow: visible;
+`;
 
 const StyledVerticalHead = styled.div`
   position: absolute;
@@ -425,15 +428,25 @@ const StyledProductImage = styled.img`
 
 const StyledDustPreventionText = styled.p`
   position: absolute;
-  left: 345px;
+  /* Растягиваем на всю ширину, чтобы текст внутри мог центрироваться */
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  
   top: 1898px;
+  
+  /* Магия центровки текста */
+  text-align: center !important;
+
   color: #b7bec8;
   font-family: Inter, sans-serif;
   font-weight: 700;
   font-size: 85px;
-  text-align: center;
   line-height: 1.1;
-`
+  
+  margin: 0 auto !important;
+  z-index: 5;
+`;
 
 const StyledBottomSectionTitle = styled.h2`
   position: absolute;
@@ -615,6 +628,43 @@ const StyledFooterAddress = styled.address`
   text-align: center;
   font-style: normal;
 `
+//DOT_POSITIONS-----------------------------------------------------------
+const DOT_POSITIONS = [
+  { top: 15, left: 31  },
+  { top: 90, left: 31  },
+  { top: 15, left: 549 },
+  { top: 90, left: 548 },
+  { top: 15, left: 845 },
+  { top: 90, left: 845 },
+  { top: 15, left: 1118 },
+  { top: 90, left: 1118 },
+  { top: 15, left: 1318 },
+  { top: 90, left: 1318 },
+  { top: 15, left: 1888 },
+  { top: 90, left: 1888 },
+  //header
+
+
+  { top: 630,  left: 845  },
+  //decorative dot//
+  
+  /* section-1: боковые полосы (линия 1064px) */
+  { top: 1070, left: 31   },
+  { top: 1070, left: 1889 },
+
+  /* section-2*/
+  { top: 2158, left: 31   },
+  { top: 2158, left: 1889 },
+
+  /* section-3: боковые */
+  { top: 3230, left: 31   },
+  { top: 3230, left: 1889 },
+
+  /* footer */
+  { top: 4206, left: 31  },
+  { top: 4206, left: 1889 },
+
+]
 
 const API_URL = import.meta.env.VITE_API_URL || ''
 
@@ -709,20 +759,27 @@ const Frame4 = () => {
           <StyledVerticalHead3 />
           <StyledVerticalHead4 />
 
-          <StyledHeaderDot style={{ left: 27, top: 12 }} />
-          <StyledHeaderDot style={{ left: 27, top: 86 }} />
-          <StyledHeaderDot style={{ left: 545, top: 12 }} />
-          <StyledHeaderDot style={{ left: 545, top: 86 }} />
-          <StyledHeaderDot style={{ left: 840, top: 12 }} />
-          <StyledHeaderDot style={{ left: 840, top: 86 }} />
-          <StyledHeaderDot style={{ left: 1115, top: 12 }} />
-          <StyledHeaderDot style={{ left: 1115, top: 86 }} />
-          <StyledHeaderDot style={{ left: 1315, top: 12 }} />
-          <StyledHeaderDot style={{ left: 1315, top: 86 }} />
-          <StyledHeaderDot style={{ left: 1885, top: 12 }} />
-          <StyledHeaderDot style={{ left: 1885, top: 86 }} />
-          <StyledHeaderDot style={{ left: 27, top: 1067 }} />
-          <StyledHeaderDot style={{ left: 1885, top: 1067 }} />
+        {DOT_POSITIONS.map((pos, i) => (
+          <StyledDot 
+            key={i} 
+            /* Используем Math.round, чтобы убрать .5 и сделать точку четкой */
+            style={{ 
+              top: `${Math.round(pos.top)}px`, 
+              left: `${Math.round(pos.left)}px` 
+            }} 
+            viewBox="0 0 6 6"
+          >
+            {/* Рисуем сам белый кружок внутри SVG-контейнера */}
+            <circle 
+              cx="3" 
+              cy="3" 
+              r="2.5" 
+              fill="white" 
+              stroke="#9C9E9D" 
+              strokeWidth="1" 
+            />
+          </StyledDot>
+        ))}
           <StyledSectionDivider2 />
           <StyledInnerVerticalLine2 />
           <StyledVerticalTop className="vt-1" />
@@ -731,8 +788,7 @@ const Frame4 = () => {
           <StyledVerticalTop className="vt-4" />
           <StyledInnerHorizontalPul />
           <StyledInnerHorizontalPul2 />
-          <StyledHeaderDot style={{ left: 27, top: 2155 }} />
-          <StyledHeaderDot style={{ left: 1885, top: 2155 }} />
+
           <StyledInnerHorizontalSec />
           <StyledInnerHorizontalSec2 />
           <StyledVerticalSec />
@@ -740,11 +796,9 @@ const Frame4 = () => {
           <StyledVerticalSec3 />
           <StyledVerticalSec4 />
           <StyledInnerHorizontalSec3 />
-          <StyledHeaderDot style={{ left: 27, top: 3227 }} />
-          <StyledHeaderDot style={{ left: 1885, top: 3227 }} />
+
           <StyledInnerHorizontalSec4 />
-          <StyledHeaderDot style={{ left: 27, top: 4203 }} />
-          <StyledHeaderDot style={{ left: 1885, top: 4203 }} />
+
 
           <StyledHeroTitle>Оригинальные запчасти Bolaite</StyledHeroTitle>
           <StyledHeroSubtitle>Первоклассные запчасти для воздушных компрессоров</StyledHeroSubtitle>
