@@ -1083,6 +1083,26 @@ const capitalizeFirst = (str) => {
 const API_URL = import.meta.env.VITE_API_URL || ''
 
 const Frame10 = () => {
+  const [showMap, setShowMap] = useState(false);
+  const mapRef = React.useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowMap(true);
+          observer.disconnect(); // Перестаем следить, когда карта загружена
+        }
+      },
+      { rootMargin: '200px' } // Начнет грузить карту за 200px до того, как пользователь до нее доскроллит
+    );
+
+    if (mapRef.current) {
+      observer.observe(mapRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
   const [scale, setScale] = useState(() => window.innerWidth / DESIGN_WIDTH)
   const [formName, setFormName] = useState('')
   const [formEmail, setFormEmail] = useState('')
@@ -1558,12 +1578,12 @@ const Frame10 = () => {
 
       <StyledContactTitle>КОНТАКТЫ</StyledContactTitle>
       <StyledContactMap
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.2128541421534!2d104.31857829270075!3d52.27423208915822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5da83b6ec3756c65%3A0x8609dae84f34f7b6!2z0YPQuy4g0KLRgNC40LvQuNGB0YHQtdGA0LAsIDg3LCDQmNGA0LrRg9GC0YHQuiwg0JjRgNC60YPRgtGB0LrQsNGPINC-0LHQuy4sIDY2NDA0Nw!5e0!3m2!1sru!2sru!4v1773172256239!5m2!1sru!2sru"
+        ref={mapRef}
+        src={showMap ? "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.2128541421534!2d104.31857829270075!3d52.27423208915822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5da83b6ec3756c65%3A0x8609dae84f34f7b6!2z0YPQuy4g0KLRgNC40LvQuNGB0YHQtdGA0LAsIDg3LCDQmNGA0LrRg9GC0YHQuiwg0JjRgNC60YPRgtGB0LrQsNGPINC-0LHQuy4sIDY2NDA0Nw!5e0!3m2!1sru!2sru!4v1773172256239!5m2!1sru!2sru" : ""}
         title="Карта: Иркутск, ул. Трилиссера 87"
         allowFullScreen
         loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      />
+        referrerPolicy="no-referrer-when-downgrade"/>
 
       <StyledContactDot className="dot1" />
       <StyledContactDetail className="detail1">Иркутск, Трилиссера 87</StyledContactDetail>
