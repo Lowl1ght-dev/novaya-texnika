@@ -761,7 +761,17 @@ const StyledContactMap = styled.iframe`
   left: 584px;
   top: 5613px;
   border: none;
-`
+
+  /* Магия: делаем все серым, а потом "вытягиваем" синий только там, где есть контраст */
+  filter: grayscale(0.9) hue-rotate(190deg) saturate(0) brightness(0.9) contrast(1.2);
+  
+  /* 
+     - grayscale(0.9): оставляем 10% цвета (этого хватит для плашки, но карта будет казаться серой)
+     - hue-rotate(190deg): перекрашивает оставшиеся цвета в синий спектр
+     - saturate(5): экстремально усиливает этот синий на плашке
+     - brightness(0.9) и contrast(1.2): сохраняют дороги видимыми на сером фоне
+  */
+`;
 
 const StyledFormTitle = styled.h2`
   position: absolute;
