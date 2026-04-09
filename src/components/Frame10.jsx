@@ -41,6 +41,24 @@ const StyledFrame10 = styled.div`
   overflow: hidden;
 `
 
+const CopyrightLink = styled.a`
+  display: block;
+  margin-top: 6440px;
+  margin-left: 1600px;
+  /* Используем тот же цвет и размер, что у адреса, но чуть прозрачнее */
+  font-size: 12px; 
+  color: #8c8c8c; /* подбери под цвет своего текста на скрине */
+  opacity: 0.6;
+  text-decoration: none;
+  text-align: center; /* если адрес по центру */
+  font-family: inherit;
+
+  &:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+`;
+
 const StyledRectangle16 = styled.div`
   width: 100%;
   height: 1193px;
@@ -1617,6 +1635,15 @@ const Frame10 = () => {
         <br />
         адрес: Иркутск, Трилиссера 87
       </StyledFooterAddress>
+      
+      {/* Твоя вотермарка */}
+      <CopyrightLink 
+        href="https://khatagov-dev.ru" 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        сделано Khatagov / Lowl1ght-dev
+      </CopyrightLink>
     </StyledFrame10>
       </ScalableContent>
     </PageWrapper>
